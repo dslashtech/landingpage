@@ -176,6 +176,14 @@ export const PORTFOLIO = [
     link: 'https://hotelsundrift.netlify.app/',
   },
   {
+    title: 'Premium Portfolio UI',
+    category: 'Portfolio',
+    description: 'A sleek, modern portfolio showcasing dark mode aesthetics and smooth micro-interactions, designed for creative agencies.',
+    image: '/projects/1_portfolio.png',
+    tags: ['Portfolio', 'React', 'Framer Motion', 'Tailwind CSS'],
+    link: 'https://ariasharmaportfolio.netlify.app/',
+  },
+  {
     title: 'Belle Aura Studio',
     category: 'Landing Pages',
     description: 'A luxury beauty & spa landing page for Bengaluru\'s premier salon — showcasing bridal makeup, spa services, and 25,000+ happy clients with WhatsApp booking.',
@@ -190,6 +198,14 @@ export const PORTFOLIO = [
     image: '/projects/3_smartcool.png',
     tags: ['Next.js', 'Tailwind', 'WhatsApp API'],
     link: 'https://smartcooltechnologies.netlify.app/',
+  },
+  {
+    title: 'Modern Dashboard Design',
+    category: 'Portfolio',
+    description: 'A high-performance analytics dashboard featuring dark mode aesthetics, intuitive data visualization, and real-time insights.',
+    image: '/projects/2_portfolio.png',
+    tags: ['Portfolio', 'Next.js', 'Tailwind', 'Chart.js'],
+    link: 'https://anishakhan.netlify.app/#',
   },
   {
     title: 'Elegance Boutique',
