@@ -20,7 +20,7 @@ export default function Pricing() {
             viewport={{ once: true, margin: "-100px" }}
             className="heading-luxury mb-6"
           >
-            Transparent Pricing
+            Transparent <span className="text-gradient">Pricing</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

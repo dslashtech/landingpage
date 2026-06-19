@@ -69,37 +69,15 @@ export default function Testimonials() {
       onMouseLeave={() => setIsPaused(false)}
       className="py-16 relative overflow-hidden bg-white"
     >
-      {/* Mesh Gradient Background */}
-      <div className="absolute inset-0 z-0">
-        <motion.div 
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-primary/5 rounded-full blur-[120px]"
-        />
-        <motion.div 
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -40, 0],
-            y: [0, 60, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/5 rounded-full blur-[120px]"
-        />
-      </div>
-
       <div className="container mx-auto px-6 relative z-10">
         
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-display font-bold text-textPrimary tracking-tight"
+            className="heading-luxury mb-6"
           >
-            What Our <span className="text-primary">Clients</span> Say
+            What Our <span className="text-gradient">Clients</span> Say
           </motion.h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-6xl mx-auto mt-16">

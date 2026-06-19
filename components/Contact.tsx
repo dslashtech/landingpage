@@ -69,9 +69,9 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-textPrimary mb-4">
+              <h2 className="heading-luxury mb-4">
                 Let's Build{" "}
-                <span className="text-primary">Something Great</span>
+                <span className="text-gradient">Something Great</span>
               </h2>
               <p className="text-textMuted text-base mb-10 leading-relaxed max-w-md">
                 Have a vision for a project? We're here to help you turn it into
@@ -157,14 +157,14 @@ export default function Contact() {
               className="w-full flex-grow flex flex-col items-center lg:items-start"
             >
               {/* Lottie Animation */}
-              <div className="w-full max-w-[600px] lg:max-w-none pointer-events-none scale-[1.15] md:scale-[1.25] transform-gpu origin-center lg:translate-y-[80px]">
-                <DotLottieReact src="/Contact2.lottie" autoplay loop />
+              <div className="w-full max-w-[600px] lg:max-w-none pointer-events-none scale-[1.2] md:scale-[1.7] transform-gpu origin-top lg:translate-y-[80px]">
+                <DotLottieReact src="/contact_orange.json" autoplay loop />
               </div>
 
               {/* Contact Information Row */}
-              <div className="flex flex-col sm:flex-row flex-wrap justify-between items-center w-full mt-12 lg:mt-[200px] gap-8 z-10 relative">
+              <div className="flex flex-row justify-between items-center w-full mt-12 lg:mt-[200px] gap-4 z-10 relative">
                 {contactItems.map((item, i) => (
-                  <div key={i} className="flex flex-col items-center gap-3 group text-center flex-1 min-w-[120px]">
+                  <div key={i} className="flex flex-col items-center gap-3 group text-center flex-1">
                     <div className="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-primary shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                       <item.icon size={20} />
                     </div>

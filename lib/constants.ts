@@ -323,10 +323,6 @@ export const PRICING_TIERS = [
 
 export const FAQS = [
   {
-    question: 'How long does a typical project take?',
-    answer: 'Timeline varies by scope. A standard high-converting landing page usually takes 1-2 weeks, while custom software development can range from 4-12 weeks depending on complexity.',
-  },
-  {
     question: 'Do you offer ongoing support?',
     answer: 'Absolutely. We offer monthly retainer packages for continuous maintenance, feature updates, and technical support to ensure your product remains cutting-edge.',
   },

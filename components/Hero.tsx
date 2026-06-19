@@ -1,180 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, ArrowRight, Star, Check, HelpCircle, Mail, Phone, MapPin, Building2, Layers, Box, Activity, Cpu, Database, Globe, Rocket } from "lucide-react";
-import { PORTFOLIO, TESTIMONIALS, PROCESS_STEPS, FAQS, PRICING_TIERS, NAV_LINKS } from "@/lib/constants";
+import { ArrowRight } from "lucide-react";
 
 const words = ["Build.", "Launch.", "Grow.", "Scale."];
-const LOGO_ICONS = [Building2, Layers, Box, Activity, Cpu, Database, Globe, Rocket];
-const BRAND_NAMES = ["Apex Corp", "Synthex", "Pulse.io", "NeuralNet", "DataFlow", "GlobalSync", "BlockBase", "AeroLaunch"];
-
-function MiniLanding({ isMobile = false }) {
-  const sections = (
-    <div className="ms-scroll-content">
-      {/* 1. Hero */}
-      <section className="ms-section ms-hero-mini">
-        <div className="ms-pill">STRATEGIC DIGITAL AGENCY</div>
-        <h4 className="ms-h1">WE HELP YOU<br /><span style={{color: 'var(--purple)'}}>SCALE FAST</span></h4>
-        <p className="ms-p-mini">Premium digital solutions for modern founders.</p>
-        <div className="ms-btn">Start Project</div>
-      </section>
-
-      {/* 2. Brands (Social Proof) */}
-      <div className="ms-brands-mini">
-        <div className="ms-brands-track">
-          {BRAND_NAMES.map((name, i) => {
-            const Icon = LOGO_ICONS[i % LOGO_ICONS.length];
-            return (
-              <div key={i} className="ms-brand-item">
-                <Icon size={8} className="ms-brand-icon" />
-                <span className="ms-brand-name">{name}</span>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* 3. Portfolio */}
-      <section className="ms-section">
-        <div className="ms-label">FEATURED PROJECTS</div>
-        <div className="ms-grid">
-          {PORTFOLIO.slice(0, 4).map((project, i) => (
-            <div key={i} className="ms-project-card">
-              <div className="ms-project-img" style={{ backgroundImage: `url(${project.image})`, backgroundSize: 'cover' }}>
-                 <div className="ms-project-overlay" />
-              </div>
-              <div className="ms-project-info">
-                <div className="ms-project-title">{project.title}</div>
-                <div className="ms-project-cat">{project.category}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. Testimonials */}
-      <section className="ms-section ms-bg-alt">
-        <div className="ms-label">HAPPY CLIENTS</div>
-        <div className="ms-testimonials-list">
-          {TESTIMONIALS.slice(0, 2).map((t, i) => (
-            <div key={i} className="ms-review-card">
-              <div className="ms-review-stars">
-                {[1, 2, 3, 4, 5].map(s => <Star key={s} size={6} fill="currentColor" />)}
-              </div>
-              <p className="ms-review-text">"{t.quote.substring(0, 60)}..."</p>
-              <div className="ms-review-user">
-                <div className="ms-avatar-mini">{t.initials}</div>
-                <div>
-                  <div className="ms-user-name">{t.name}</div>
-                  <div className="ms-user-role">{t.role}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. Process */}
-      <section className="ms-section">
-        <div className="ms-label">OUR PROCESS</div>
-        <div className="ms-process-mini">
-          {PROCESS_STEPS.map((step, i) => (
-            <div key={i} className="ms-p-item">
-              <div className="ms-p-dot">{i + 1}</div>
-              <div className="ms-p-text">
-                <div className="ms-p-title">{step.title}</div>
-                <div className="ms-p-line" />
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 6. Pricing */}
-      <section className="ms-section ms-bg-alt">
-        <div className="ms-label">PRICING PLANS</div>
-        <div className="ms-pricing-mini">
-          {PRICING_TIERS.map((tier, i) => (
-            <div key={i} className={`ms-p-card ${tier.isPopular ? 'ms-p-popular' : ''}`}>
-              <div className="ms-p-name">{tier.name}</div>
-              <div className="ms-p-price">{tier.oneTimePrice}</div>
-              <div className="ms-p-btn">Select</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 7. FAQ */}
-      <section className="ms-section">
-        <div className="ms-label">FAQ</div>
-        <div className="ms-faq-list">
-          {FAQS.slice(0, 3).map((f, i) => (
-            <div key={i} className="ms-faq-mini">
-              <div className="ms-faq-q">
-                 <HelpCircle size={8} />
-                 {f.question.substring(0, 30)}...
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 8. CTA Banner */}
-      <section className="ms-cta-mini">
-        <div className="ms-h2">READY TO<br />LAUNCH?</div>
-        <div className="ms-btn-white">Get Started</div>
-      </section>
-
-      {/* 9. Contact */}
-      <section className="ms-section">
-        <div className="ms-label">GET IN TOUCH</div>
-        <div className="ms-form-mini">
-          <div className="ms-in" />
-          <div className="ms-in" />
-          <div className="ms-in" style={{height: '30px'}} />
-          <div className="ms-btn">Send Message</div>
-        </div>
-      </section>
-
-      {/* 10. Footer */}
-      <footer className="ms-footer-mini">
-        <div className="ms-f-top">
-          <div className="ms-f-logo">D</div>
-          <div className="ms-f-links">
-            <div className="ms-l-dot" />
-            <div className="ms-l-dot" />
-            <div className="ms-l-dot" />
-          </div>
-        </div>
-        <div className="ms-copyright">© 2026 Dslash</div>
-      </footer>
-    </div>
-  );
-
-  return (
-    <div className={`mini-landing ${isMobile ? 'mini-mobile' : 'mini-desktop'}`}>
-      <div className="mini-header">
-        <div className="mini-logo">D</div>
-        {isMobile ? (
-          <div className="mini-burger">
-            <div />
-            <div />
-          </div>
-        ) : (
-          <div className="mini-nav">
-            {NAV_LINKS.map(link => (
-              <span key={link.label} className="mini-link">{link.label}</span>
-            ))}
-            <div className="mini-btn-small">Get Quote</div>
-          </div>
-        )}
-      </div>
-      <div className="ms-viewport">
-        {sections}
-        {sections} {/* Duplicate for seamless loop */}
-      </div>
-    </div>
-  );
-}
 
 export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
@@ -335,168 +163,190 @@ export default function Hero() {
         .scene {
           position: relative;
           width: 560px;
-          height: 420px;
+          height: 500px;
         }
 
-        /* monitor */
-        .monitor {
+        /* hero gradient orb */
+        .orb {
           position: absolute;
-          top: 0;
-          left: 0;
-          width: 520px;
-          height: 340px;
-          background: #F4F5F5;
-          border: 1px solid var(--border2);
-          border-radius: 16px;
-          box-shadow: 0 40px 100px rgba(0,0,0,0.06);
-          overflow: hidden;
+          border-radius: 50%;
+          filter: blur(80px);
+          pointer-events: none;
+        }
+        .orb-1 {
+          width: 400px; height: 400px;
+          background: radial-gradient(circle, rgba(255, 94, 0, 0.15), transparent 70%);
+          top: 20px; left: 80px;
+          animation: orbFloat 8s ease-in-out infinite;
+        }
+        .orb-2 {
+          width: 250px; height: 250px;
+          background: radial-gradient(circle, rgba(255, 94, 0, 0.08), transparent 70%);
+          bottom: 40px; right: 40px;
+          animation: orbFloat 12s ease-in-out infinite reverse;
+        }
+        @keyframes orbFloat {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(20px, -20px) scale(1.05); }
+          66% { transform: translate(-10px, 15px) scale(0.95); }
+        }
+
+        /* dashboard card */
+        .dash-card {
+          position: relative;
+          width: 480px;
+          background: rgba(255, 255, 255, 0.75);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          border-radius: 24px;
+          box-shadow: 0 30px 80px rgba(0,0,0,0.06), 0 0 0 1px rgba(255, 94, 0, 0.05);
           z-index: 2;
+          padding: 28px;
+          animation: fu .7s ease .3s both, floatCard 6s ease-in-out 1s infinite;
         }
-        .mon-bar {
-          height: 34px;
-          background: #fff;
-          border-bottom: 1px solid var(--border);
+        .dash-header {
           display: flex;
+          justify-content: space-between;
           align-items: center;
-          padding: 0 16px;
-          gap: 8px;
+          margin-bottom: 24px;
         }
-        .mdot { width: 8px; height: 8px; border-radius: 50%; }
-        .mon-url {
-          margin: 0 auto;
-          background: #DEDFE0;
-          padding: 4px 12px;
-          border-radius: 4px;
-          font-size: 10px;
-          color: var(--muted);
-          font-family: var(--mono);
+        .dash-title {
+          font-size: 14px;
+          font-weight: 700;
+          color: var(--text);
+          letter-spacing: -0.3px;
+        }
+        .dash-status {
           display: flex;
           align-items: center;
           gap: 6px;
+          font-size: 11px;
+          color: #22c55e;
+          font-weight: 600;
+        }
+        .dash-dot {
+          width: 6px; height: 6px;
+          background: #22c55e;
+          border-radius: 50%;
+          animation: p 2s infinite;
         }
 
-        .mon-screen {
-          height: calc(100% - 34px);
-          padding: 16px;
-          overflow: hidden;
-          background: #fff;
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-        .ms-stats {
+        .dash-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 16px;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+          margin-bottom: 16px;
         }
-        .ms-stat {
-          background: #F4F5F5;
+        .dash-metric {
+          background: rgba(255, 255, 255, 0.7);
+          border: 1px solid rgba(15, 15, 15, 0.04);
+          border-radius: 16px;
           padding: 16px;
-          border-radius: 12px;
-          border: 1px solid var(--border);
         }
-        .mss-l {
-          font-size: 10px;
+        .dm-label {
+          font-size: 11px;
           color: var(--muted);
+          font-weight: 600;
           text-transform: uppercase;
-          letter-spacing: 1px;
-          margin-bottom: 8px;
-          font-weight: 700;
+          letter-spacing: 0.5px;
+          margin-bottom: 6px;
         }
-        .mss-v {
+        .dm-value {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 28px;
+          font-size: 32px;
+          color: var(--text);
           line-height: 1;
         }
-        .mss-d { font-size: 10px; color: var(--accent); font-weight: 700; margin-top: 4px; }
-
-        .ms-chart {
-          flex: 1;
-          background: #F4F5F5;
-          border-radius: 12px;
-          padding: 20px;
-          border: 1px solid var(--border);
-          display: flex;
-          flex-direction: column;
+        .dm-change {
+          font-size: 11px;
+          font-weight: 700;
+          color: #22c55e;
+          margin-top: 4px;
         }
-        .msc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-        .msc-title { font-size: 12px; font-weight: 700; color: var(--text); }
-        .msc-badge {
+        .dm-change.down { color: #ef4444; }
+
+        .dash-chart {
+          background: rgba(255, 255, 255, 0.7);
+          border: 1px solid rgba(15, 15, 15, 0.04);
+          border-radius: 16px;
+          padding: 16px;
+        }
+        .dc-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 12px;
+        }
+        .dc-title {
+          font-size: 11px;
+          font-weight: 700;
+          color: var(--text);
+        }
+        .dc-badge {
           font-size: 9px;
-          background: rgba(255, 94, 0, 0.1);
+          background: rgba(255, 94, 0, 0.08);
           color: var(--accent);
-          padding: 4px 8px;
-          border-radius: 4px;
+          padding: 3px 8px;
+          border-radius: 6px;
           font-weight: 700;
         }
-        .mbars {
-          flex: 1;
+        .dc-bars {
           display: flex;
           align-items: flex-end;
-          justify-content: space-between;
           gap: 8px;
-          padding-top: 10px;
+          height: 100px;
         }
-        .mbw { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; }
-        .mb {
-          border-radius: 4px 4px 0 0;
-          width: 100%;
-          transition: height .6s ease;
-          animation: gf 1s ease both;
-        }
-        @keyframes gf { from { transform: scaleY(0); transform-origin: bottom; } to { transform: scaleY(1); } }
-        .mbl { font-size: 8px; color: var(--muted); text-align: center; font-weight: 600; }
-
-        /* phone */
-        .phone {
-          position: absolute;
-          bottom: 40px;
-          right: 20px;
-          width: 190px;
-          height: 380px;
-          background: #F4F5F5;
-          border: 8px solid #0F0F0F;
-          border-radius: 32px;
-          box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-          overflow: hidden;
-          z-index: 3;
-        }
-        .ph-top { height: 24px; background: #0F0F0F; display: flex; justify-content: center; align-items: center; }
-        .notch { width: 60px; height: 12px; background: #000; border-radius: 0 0 10px 10px; }
-        .ph-screen { height: calc(100% - 24px); background: #fff; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
-
-        /* floating badges */
-        .fb {
-          position: absolute;
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(10px);
-          padding: 12px 16px;
-          border-radius: 16px;
-          border: 1px solid var(--border2);
-          box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-          white-space: nowrap;
-          z-index: 4;
+        .dc-bar-wrap {
+          flex: 1;
           display: flex;
           flex-direction: column;
+          align-items: center;
           gap: 4px;
-          animation: fu .7s ease .4s both;
         }
-        
-        .fb-live { top: 40px; right: -30px; }
-        .fbl-row { display: flex; align-items: center; gap: 12px; }
-        .fbl-dot { width: 6px; height: 6px; background: #FF5E00; border-radius: 50%; }
-        .fbl-val { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--text); line-height: 1; }
-        .fbl-sub { font-size: 10px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
+        .dc-bar {
+          width: 100%;
+          border-radius: 6px 6px 0 0;
+          min-height: 4px;
+          transform-origin: bottom;
+          animation: gf 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+        .dc-bar-label {
+          font-size: 8px;
+          color: var(--muted);
+          font-weight: 600;
+        }
 
-        .fb-rating { bottom: 80px; left: -60px; animation-delay: .5s; }
-        .fbr-stars { color: #FF5E00; font-size: 12px; margin-bottom: 4px; }
-        .fbr-val { font-size: 16px; font-weight: 800; color: var(--text); line-height: 1; }
-        .fbr-sub { font-size: 9px; color: var(--muted); font-weight: 700; margin-top: 2px; }
-
-        .fb-conv { bottom: 40px; right: 180px; animation-delay: .6s; }
-        .fbc-icon { font-size: 14px; margin-bottom: 4px; }
-        .fbc-val { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--purple); line-height: 1; }
-        .fbc-lbl { font-size: 9px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; font-weight: 700; }
+        /* floating card */
+        .float-card {
+          position: absolute;
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(16px);
+          border: 1px solid rgba(255, 255, 255, 0.6);
+          border-radius: 16px;
+          box-shadow: 0 16px 40px rgba(0,0,0,0.04);
+          z-index: 3;
+          padding: 14px 18px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .fc-1 { top: 30px; right: -30px; animation: fu .7s ease .5s both, floatCard 5s ease-in-out 1.2s infinite; }
+        .fc-2 { bottom: 30px; left: -40px; animation: fu .7s ease .6s both, floatCard 7s ease-in-out 1.3s infinite reverse; }
+        .fc-3 { bottom: 160px; right: -20px; animation: fu .7s ease .7s both, floatCard 6s ease-in-out 1.4s infinite; }
+        .fc-icon {
+          width: 38px; height: 38px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+        }
+        .fc-icon.green { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
+        .fc-icon.orange { background: rgba(255, 94, 0, 0.1); color: var(--accent); }
+        .fc-icon.blue { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+        .fc-info { display: flex; flex-direction: column; }
+        .fc-val { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--text); line-height: 1.1; }
+        .fc-label { font-size: 9px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* buttons */
         .ha { display: flex; gap: 16px; margin-top: 8px; margin-bottom: 40px; }
@@ -594,94 +444,9 @@ export default function Hero() {
         .sn em { color: var(--accent); font-style: normal; }
         .sl { font-size: 11px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; }
 
-        /* MINI LANDING - REAL SITE MIRROR */
-        .mini-landing { height: 100%; display: flex; flex-direction: column; background: #fff; font-family: 'Inter', sans-serif; overflow: hidden; }
-        .mini-header { display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; border-bottom: 1px solid rgba(15, 15, 15, 0.04); z-index: 10; background: #fff; }
-        .mini-logo { font-weight: 1000; font-size: 14px; color: var(--purple); letter-spacing: -1.5px; }
-        .mini-burger { display: flex; flex-direction: column; gap: 2.5px; }
-        .mini-burger div { width: 14px; height: 2px; background: var(--text); border-radius: 1px; }
-        
-        .mini-nav { display: flex; align-items: center; gap: 10px; }
-        .mini-link { font-size: 7px; color: var(--muted); font-weight: 800; cursor: pointer; }
-        .mini-btn-small { font-size: 7px; background: var(--purple); color: #fff; padding: 4px 10px; border-radius: 4px; font-weight: 800; }
-
-        .ms-viewport { flex: 1; overflow: hidden; position: relative; }
-        .ms-scroll-content { display: flex; flex-direction: column; animation: ms-scroll 60s linear infinite; }
-        @keyframes ms-scroll { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
-
-        .ms-section { padding: 16px 14px; border-bottom: 1px solid rgba(15, 15, 15, 0.03); }
-        .ms-bg-alt { background: #F4F5F5; }
-        .ms-hero-mini { height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 10px; background: radial-gradient(circle at top right, rgba(255, 94, 0, 0.05), transparent); }
-        .ms-pill { font-size: 7px; background: rgba(255, 94, 0, 0.08); color: var(--purple); padding: 4px 10px; border-radius: 20px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
-        .ms-h1 { font-size: 32px; font-family: 'Bebas Neue', sans-serif; line-height: 0.85; color: var(--text); margin: 6px 0; letter-spacing: -0.5px; }
-        .ms-p-mini { font-size: 10px; color: var(--muted); max-width: 140px; margin: 0 auto; line-height: 1.4; }
-        .ms-btn { background: var(--purple); color: #fff; padding: 8px 18px; border-radius: 8px; font-size: 9px; font-weight: 800; margin-top: 8px; box-shadow: 0 4px 12px rgba(255, 94, 0, 0.2); }
-
-        .ms-brands-mini { background: #fff; padding: 12px 0; border-bottom: 1px solid rgba(15, 15, 15, 0.03); overflow: hidden; }
-        .ms-brands-track { display: flex; gap: 20px; padding: 0 14px; }
-        .ms-brand-item { display: flex; align-items: center; gap: 4px; opacity: 0.4; }
-        .ms-brand-name { font-size: 8px; font-weight: 900; font-family: 'Bebas Neue', sans-serif; }
-
-        .ms-label { font-size: 8px; font-weight: 1000; color: var(--muted); margin-bottom: 14px; letter-spacing: 1.5px; text-transform: uppercase; border-left: 2px solid var(--purple); padding-left: 8px; }
-        
-        .ms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .ms-project-card { border-radius: 10px; overflow: hidden; background: #fff; border: 1px solid rgba(15, 15, 15, 0.04); box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-        .ms-project-img { height: 60px; position: relative; }
-        .ms-project-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4), transparent); }
-        .ms-project-info { padding: 8px; }
-        .ms-project-title { font-size: 8px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
-        .ms-project-cat { font-size: 7px; color: var(--purple); font-weight: 700; opacity: 0.7; }
-
-        .ms-testimonials-list { display: flex; flex-direction: column; gap: 10px; }
-        .ms-review-card { padding: 12px; background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-        .ms-review-stars { display: flex; gap: 2px; color: #FF5E00; margin-bottom: 6px; }
-        .ms-review-text { font-size: 9px; line-height: 1.4; color: var(--text); font-style: italic; margin-bottom: 8px; }
-        .ms-review-user { display: flex; align-items: center; gap: 8px; }
-        .ms-avatar-mini { width: 18px; height: 18px; border-radius: 50%; background: #DEDFE0; font-size: 7px; display: flex; align-items: center; justify-content: center; font-weight: 900; }
-        .ms-user-name { font-size: 8px; font-weight: 800; color: var(--text); }
-        .ms-user-role { font-size: 7px; color: var(--muted); }
-
-        .ms-process-mini { display: flex; flex-direction: column; gap: 14px; }
-        .ms-p-item { display: flex; align-items: center; gap: 10px; }
-        .ms-p-dot { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--purple); color: var(--purple); font-size: 8px; display: flex; align-items: center; justify-content: center; font-weight: 1000; flex-shrink: 0; }
-        .ms-p-text { flex: 1; display: flex; align-items: center; gap: 8px; }
-        .ms-p-title { font-size: 9px; font-weight: 800; color: var(--text); white-space: nowrap; }
-        .ms-p-line { height: 1px; flex: 1; background: #DEDFE0; }
-
-        .ms-pricing-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-        .ms-p-card { padding: 10px 4px; background: #fff; border: 1px solid var(--border); border-radius: 10px; text-align: center; display: flex; flex-direction: column; gap: 4px; }
-        .ms-p-popular { border-color: var(--purple); background: rgba(255, 94, 0, 0.02); transform: scale(1.05); }
-        .ms-p-name { font-size: 7px; font-weight: 700; color: var(--muted); text-transform: uppercase; }
-        .ms-p-price { font-size: 10px; font-weight: 1000; font-family: 'Bebas Neue', sans-serif; color: var(--text); }
-        .ms-p-btn { font-size: 7px; background: #DEDFE0; padding: 4px; border-radius: 4px; font-weight: 800; }
-        .ms-p-popular .ms-p-btn { background: var(--purple); color: #fff; }
-
-        .ms-faq-mini { padding: 8px; background: #fff; border-radius: 6px; border: 1px solid var(--border); margin-bottom: 6px; }
-        .ms-faq-q { display: flex; align-items: center; gap: 6px; font-size: 8px; font-weight: 700; color: var(--text); }
-
-        .ms-cta-mini { padding: 40px 14px; background: var(--purple); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; position: relative; overflow: hidden; }
-        .ms-cta-mini::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent); }
-        .ms-h2 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #fff; line-height: 0.9; margin: 0; position: relative; z-index: 1; }
-        .ms-btn-white { background: #fff; color: var(--purple); padding: 10px 20px; border-radius: 8px; font-size: 9px; font-weight: 1000; position: relative; z-index: 1; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-
-        .ms-form-mini { display: flex; flex-direction: column; gap: 8px; }
-        .ms-in { height: 20px; background: #F4F5F5; border: 1px solid var(--border); border-radius: 6px; }
-
-        .ms-footer-mini { padding: 24px 14px; background: #0F0F0F; color: #fff; display: flex; flex-direction: column; gap: 14px; }
-        .ms-f-top { display: flex; justify-content: space-between; align-items: center; }
-        .ms-f-logo { font-size: 14px; font-weight: 1000; letter-spacing: -1px; color: var(--purple); }
-        .ms-f-links { display: flex; gap: 6px; }
-        .ms-l-dot { width: 4px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 50%; }
-        .ms-copyright { font-size: 7px; color: rgba(255,255,255,0.3); font-weight: 600; letter-spacing: 0.5px; }
-
-        .mini-mobile .ms-h1 { font-size: 26px; }
-        .mini-mobile .ms-hero-mini { height: 180px; }
-        .mini-mobile .ms-p-mini { font-size: 9px; }
-        .mini-mobile .ms-grid { grid-template-columns: 1fr; }
-        .mini-mobile .ms-pricing-mini { grid-template-columns: 1fr; gap: 8px; }
-        .mini-mobile .ms-p-card { padding: 12px; }
-
         @keyframes fu { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes floatCard { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        @keyframes gf { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
         @media(max-width: 960px) {
           .hg { grid-template-columns: 1fr; padding: 0 24px; }
@@ -784,36 +549,88 @@ export default function Hero() {
           {/* RIGHT SCENE */}
           <div className="hr">
             <div className="scene">
-              {/* MONITOR */}
-              <div className="monitor">
-                <div className="mon-bar">
-                  <div className="mdot" style={{ background: "#DEDFE0" }} />
-                  <div className="mdot" style={{ background: "#C2C3C4" }} />
-                  <div className="mdot" style={{ background: "#838585" }} />
-                  <div className="mon-url">
-                    <span style={{ color: "var(--green)", fontSize: "8px" }}>🔒</span>
-                    dslash.agency/dashboard
+              <div className="orb orb-1" />
+              <div className="orb orb-2" />
+
+              <div className="dash-card">
+                <div className="dash-header">
+                  <span className="dash-title">Dashboard Overview</span>
+                  <div className="dash-status">
+                    <div className="dash-dot" />
+                    Live
                   </div>
                 </div>
 
-                <div className="mon-screen">
-                  <MiniLanding />
+                <div className="dash-grid">
+                  <div className="dash-metric">
+                    <div className="dm-label">Revenue</div>
+                    <div className="dm-value">$128.4k</div>
+                    <div className="dm-change">↑ 12.3%</div>
+                  </div>
+                  <div className="dash-metric">
+                    <div className="dm-label">Users</div>
+                    <div className="dm-value">24.8k</div>
+                    <div className="dm-change">↑ 8.1%</div>
+                  </div>
+                  <div className="dash-metric">
+                    <div className="dm-label">Conversion</div>
+                    <div className="dm-value">4.8%</div>
+                    <div className="dm-change down">↓ 0.6%</div>
+                  </div>
+                  <div className="dash-metric">
+                    <div className="dm-label">Page Speed</div>
+                    <div className="dm-value">96</div>
+                    <div className="dm-change">↑ 3pts</div>
+                  </div>
+                </div>
+
+                <div className="dash-chart">
+                  <div className="dc-head">
+                    <span className="dc-title">Monthly Growth</span>
+                    <span className="dc-badge">+24% this month</span>
+                  </div>
+                  <div className="dc-bars">
+                    {[40, 55, 45, 70, 60, 85, 75, 90, 80, 95, 88, 100].map((h, i) => (
+                      <div key={i} className="dc-bar-wrap">
+                        <div
+                          className="dc-bar"
+                          style={{
+                            height: `${h}%`,
+                            background: i === 11 ? 'linear-gradient(to top, #FF5E00, #ff8c40)' : 'rgba(255, 94, 0, 0.12)',
+                            animationDelay: `${i * 0.05}s`,
+                          }}
+                        />
+                        <span className="dc-bar-label">
+                          {['J','F','M','A','M','J','J','A','S','O','N','D'][i]}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              {/* PHONE */}
-              <div className="phone">
-                <div className="ph-top">
-                  <div className="notch" />
-                </div>
-                <div className="ph-screen">
-                  <MiniLanding isMobile />
+              <div className="float-card fc-1">
+                <div className="fc-icon green">↑</div>
+                <div className="fc-info">
+                  <span className="fc-val">98.2%</span>
+                  <span className="fc-label">Uptime</span>
                 </div>
               </div>
-
-              {/* BADGES */}
+              <div className="float-card fc-2">
+                <div className="fc-icon orange">★</div>
+                <div className="fc-info">
+                  <span className="fc-val">4.9/5</span>
+                  <span className="fc-label">Client Rating</span>
+                </div>
+              </div>
+              <div className="float-card fc-3">
+                <div className="fc-icon blue">⚡</div>
+                <div className="fc-info">
+                  <span className="fc-val">0.8s</span>
+                  <span className="fc-label">Avg Load Time</span>
+                </div>
+              </div>
             </div>
-
           </div>
         </div>
 

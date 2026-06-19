@@ -16,7 +16,7 @@ export default function Process() {
             viewport={{ once: true, margin: "-100px" }}
             className="heading-luxury mb-4"
           >
-            How We Work
+            How We <span className="text-gradient">Work</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

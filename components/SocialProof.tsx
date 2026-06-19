@@ -26,10 +26,6 @@ const LOGOS = [
 export default function SocialProof() {
   return (
     <section className="py-12 border-y border-slate-100 bg-white relative overflow-hidden">
-      {/* Standardized 60px Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(15,15,15,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(15,15,15,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
-
-
       {/* Marquee */}
       <div className="relative flex overflow-x-hidden border-t border-slate-100 bg-slate-50/50 py-10">
         <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-background to-transparent" />
