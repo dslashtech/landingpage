@@ -235,15 +235,6 @@ export default function Hero() {
           transition: left .1s, top .1s;
         }
 
-        /* bg */
-        .grid-overlay {
-          position: absolute;
-          inset: 0;
-          background-image: linear-gradient(rgba(15, 15, 15, 0.02) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(15, 15, 15, 0.02) 1px, transparent 1px);
-          background-size: 60px 60px;
-          z-index: 0;
-        }
         .blob {
           position: absolute;
           border-radius: 50%;
@@ -708,7 +699,6 @@ export default function Hero() {
 
       <div className="hw">
         <div className="cg" ref={glowRef} />
-        <div className="grid-overlay" />
         <div className="blob ba" />
         <div className="blob bb" />
         <div className="blob bc" />
