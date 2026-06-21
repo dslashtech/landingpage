@@ -5,7 +5,7 @@ import { PROCESS_STEPS } from '@/lib/constants';
 
 export default function Process() {
   return (
-    <section id="process" className="py-24 bg-slate-50 relative border-y border-slate-100 overflow-hidden">
+    <section id="process" className="py-12 bg-slate-50 relative border-y border-slate-100 overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         
         {/* Section Header */}
@@ -30,8 +30,8 @@ export default function Process() {
         </div>
 
         {/* Timeline Desktop (Wavy layout) */}
-        <div className="hidden md:block pb-12">
-          <div className="relative w-full h-[400px]">
+        <div className="hidden md:block pb-4">
+          <div className="relative w-full h-[320px]">
             {/* The SVG Track Wrapper */}
             <motion.div 
               className="absolute inset-0 w-full h-full pointer-events-none"
@@ -71,13 +71,13 @@ export default function Process() {
                     {isEven ? (
                       <>
                         {/* Top Icon (Even) */}
-                        <div className="h-[200px] shrink-0 flex flex-col justify-center w-full items-center">
+                        <div className="h-[160px] shrink-0 flex flex-col justify-center w-full items-center">
                           <div className="w-20 h-20 rounded-full border-4 border-primary bg-white text-primary flex items-center justify-center relative shadow-lg">
                             {step.icon ? <step.icon className="w-8 h-8" /> : <span className="text-xl font-bold">0{index + 1}</span>}
                           </div>
                         </div>
                         {/* Bottom Text */}
-                        <div className="h-[200px] shrink-0 flex flex-col justify-start pt-6 text-center px-4 w-full">
+                        <div className="h-[160px] shrink-0 flex flex-col justify-start pt-6 text-center px-4 w-full">
                           <h3 className="text-xl font-bold text-textPrimary mb-2 font-display">
                             <span className="text-primary mr-2">0{index + 1}</span>
                             {step.title}
@@ -88,7 +88,7 @@ export default function Process() {
                     ) : (
                       <>
                         {/* Top Text (Odd) */}
-                        <div className="h-[200px] shrink-0 flex flex-col justify-end pb-6 text-center px-4 w-full">
+                        <div className="h-[160px] shrink-0 flex flex-col justify-end pb-6 text-center px-4 w-full">
                           <h3 className="text-xl font-bold text-textPrimary mb-2 font-display">
                             <span className="text-primary mr-2">0{index + 1}</span>
                             {step.title}
@@ -96,7 +96,7 @@ export default function Process() {
                           <p className="text-textMuted text-sm">{step.description}</p>
                         </div>
                         {/* Bottom Icon */}
-                        <div className="h-[200px] shrink-0 flex flex-col justify-center w-full items-center">
+                        <div className="h-[160px] shrink-0 flex flex-col justify-center w-full items-center">
                           <div className="w-20 h-20 rounded-full border-4 border-primary bg-white text-primary flex items-center justify-center relative shadow-lg">
                             {step.icon ? <step.icon className="w-8 h-8" /> : <span className="text-xl font-bold">0{index + 1}</span>}
                           </div>

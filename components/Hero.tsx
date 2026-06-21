@@ -561,6 +561,7 @@ export default function Hero() {
           .h1 { font-size: 80px; }
           .hp { margin-left: auto; margin-right: auto; }
           .ha { justify-content: center; }
+          .bp, .bg2 { white-space: nowrap; padding: 14px 24px; font-size: 14px; }
           .tr { justify-content: center; }
           .sp { justify-content: center; }
           .hr { display: none; }
