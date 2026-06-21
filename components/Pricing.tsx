@@ -38,8 +38,8 @@ export default function Pricing() {
           {PRICING_TIERS.map((tier, index) => {
             const priceText = tier.oneTimePrice;
             const isCustom = priceText.toLowerCase() === 'custom';
-            const currency = priceText.startsWith('$') ? '$' : '';
-            const amount = priceText.startsWith('$') ? priceText.slice(1) : priceText;
+            const currency = priceText.startsWith('₹') ? '₹' : '';
+            const amount = priceText.startsWith('₹') ? priceText.slice(1) : priceText;
 
             return (
               <motion.div

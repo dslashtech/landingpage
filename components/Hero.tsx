@@ -76,7 +76,7 @@ export default function Hero() {
 
         /* wrap */
         .hw {
-          min-height: 100vh;
+          min-height: 85vh;
           position: relative;
           display: flex;
           flex-direction: column;
@@ -137,7 +137,7 @@ export default function Hero() {
 
         .h1 {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: clamp(60px, 8vw, 110px);
+          font-size: clamp(48px, 6vw, 84px);
           line-height: .9;
           letter-spacing: -2px;
           margin-bottom: 24px;
@@ -162,8 +162,8 @@ export default function Hero() {
         }
         .scene {
           position: relative;
-          width: 560px;
-          height: 500px;
+          width: 520px;
+          height: 460px;
         }
 
         /* hero gradient orb */
@@ -174,15 +174,15 @@ export default function Hero() {
           pointer-events: none;
         }
         .orb-1 {
-          width: 400px; height: 400px;
-          background: radial-gradient(circle, rgba(255, 94, 0, 0.15), transparent 70%);
-          top: 20px; left: 80px;
+          width: 350px; height: 350px;
+          background: radial-gradient(circle, rgba(255, 94, 0, 0.12), transparent 70%);
+          top: 10px; left: 60px;
           animation: orbFloat 8s ease-in-out infinite;
         }
         .orb-2 {
-          width: 250px; height: 250px;
-          background: radial-gradient(circle, rgba(255, 94, 0, 0.08), transparent 70%);
-          bottom: 40px; right: 40px;
+          width: 200px; height: 200px;
+          background: radial-gradient(circle, rgba(255, 94, 0, 0.06), transparent 70%);
+          bottom: 30px; right: 30px;
           animation: orbFloat 12s ease-in-out infinite reverse;
         }
         @keyframes orbFloat {
@@ -191,162 +191,267 @@ export default function Hero() {
           66% { transform: translate(-10px, 15px) scale(0.95); }
         }
 
-        /* dashboard card */
-        .dash-card {
+        /* bento grid */
+        .bento {
           position: relative;
-          width: 480px;
-          background: rgba(255, 255, 255, 0.75);
-          backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.8);
-          border-radius: 24px;
-          box-shadow: 0 30px 80px rgba(0,0,0,0.06), 0 0 0 1px rgba(255, 94, 0, 0.05);
           z-index: 2;
-          padding: 28px;
-          animation: fu .7s ease .3s both, floatCard 6s ease-in-out 1s infinite;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto auto auto;
+          gap: 14px;
+          width: 100%;
+          animation: fu .7s ease .3s both;
         }
-        .dash-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 24px;
+        .bento-card {
+          background: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(24px);
+          border: 1px solid rgba(255, 255, 255, 0.9);
+          border-radius: 20px;
+          padding: 22px;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.02);
+          transition: transform .3s ease, box-shadow .3s ease;
         }
-        .dash-title {
-          font-size: 14px;
+        .bento-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 16px 48px rgba(255, 94, 0, 0.08), 0 0 0 1px rgba(255, 94, 0, 0.08);
+        }
+        .bento-wide { grid-column: 1 / -1; }
+        .bento-label {
+          font-size: 10px;
+          color: var(--muted);
           font-weight: 700;
-          color: var(--text);
-          letter-spacing: -0.3px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 8px;
         }
-        .dash-status {
+        .bento-value {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 36px;
+          color: var(--text);
+          line-height: 1;
+        }
+        .bento-change {
+          font-size: 11px;
+          font-weight: 700;
+          margin-top: 4px;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          padding: 2px 8px;
+          border-radius: 20px;
+        }
+        .bento-change.up {
+          color: #22c55e;
+          background: rgba(34, 197, 94, 0.08);
+        }
+        .bento-change.down {
+          color: #ef4444;
+          background: rgba(239, 68, 68, 0.08);
+        }
+
+        /* sparkline */
+        .spark-row {
+          display: flex;
+          align-items: flex-end;
+          gap: 3px;
+          height: 48px;
+          margin-top: 12px;
+        }
+        .spark-bar {
+          flex: 1;
+          border-radius: 4px;
+          min-height: 4px;
+          transform-origin: bottom;
+          animation: gf 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+
+        /* donut chart */
+        .donut-wrap {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin-top: 10px;
+        }
+        .donut-legend {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .donut-item {
           display: flex;
           align-items: center;
           gap: 6px;
           font-size: 11px;
-          color: #22c55e;
-          font-weight: 600;
-        }
-        .dash-dot {
-          width: 6px; height: 6px;
-          background: #22c55e;
-          border-radius: 50%;
-          animation: p 2s infinite;
-        }
-
-        .dash-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 12px;
-          margin-bottom: 16px;
-        }
-        .dash-metric {
-          background: rgba(255, 255, 255, 0.7);
-          border: 1px solid rgba(15, 15, 15, 0.04);
-          border-radius: 16px;
-          padding: 16px;
-        }
-        .dm-label {
-          font-size: 11px;
-          color: var(--muted);
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          margin-bottom: 6px;
-        }
-        .dm-value {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 32px;
           color: var(--text);
-          line-height: 1;
+          font-weight: 600;
         }
-        .dm-change {
-          font-size: 11px;
-          font-weight: 700;
-          color: #22c55e;
-          margin-top: 4px;
+        .donut-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
         }
-        .dm-change.down { color: #ef4444; }
 
-        .dash-chart {
-          background: rgba(255, 255, 255, 0.7);
-          border: 1px solid rgba(15, 15, 15, 0.04);
-          border-radius: 16px;
-          padding: 16px;
-        }
-        .dc-head {
+        /* status row */
+        .status-row {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 12px;
+          margin-top: 8px;
         }
-        .dc-title {
-          font-size: 11px;
-          font-weight: 700;
+        .status-item {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .status-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+        }
+        .status-text {
+          font-size: 12px;
+          font-weight: 600;
           color: var(--text);
         }
-        .dc-badge {
-          font-size: 9px;
-          background: rgba(255, 94, 0, 0.08);
-          color: var(--accent);
-          padding: 3px 8px;
-          border-radius: 6px;
-          font-weight: 700;
-        }
-        .dc-bars {
-          display: flex;
-          align-items: flex-end;
-          gap: 8px;
-          height: 100px;
-        }
-        .dc-bar-wrap {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 4px;
-        }
-        .dc-bar {
-          width: 100%;
-          border-radius: 6px 6px 0 0;
-          min-height: 4px;
-          transform-origin: bottom;
-          animation: gf 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-        }
-        .dc-bar-label {
-          font-size: 8px;
-          color: var(--muted);
-          font-weight: 600;
+        .status-val {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 20px;
+          color: var(--text);
+          line-height: 1;
         }
 
-        /* floating card */
-        .float-card {
-          position: absolute;
-          background: rgba(255, 255, 255, 0.85);
-          backdrop-filter: blur(16px);
-          border: 1px solid rgba(255, 255, 255, 0.6);
-          border-radius: 16px;
-          box-shadow: 0 16px 40px rgba(0,0,0,0.04);
-          z-index: 3;
-          padding: 14px 18px;
+        /* bento card stagger animations */
+        .bento-card {
+          opacity: 0;
+          transform: translateY(24px);
+          animation: bentoIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .bento-card:nth-child(1) { animation: bentoIn 0.6s cubic-bezier(0.2,0.8,0.2,1) 0.3s forwards, bentoFloat1 5s ease-in-out 1s infinite; }
+        .bento-card:nth-child(2) { animation: bentoIn 0.6s cubic-bezier(0.2,0.8,0.2,1) 0.45s forwards, bentoFloat2 6s ease-in-out 1.2s infinite; }
+        .bento-card:nth-child(3) { animation: bentoIn 0.6s cubic-bezier(0.2,0.8,0.2,1) 0.6s forwards, bentoFloat3 5.5s ease-in-out 1.4s infinite; }
+        .bento-card:nth-child(4) { animation: bentoIn 0.6s cubic-bezier(0.2,0.8,0.2,1) 0.75s forwards, bentoFloat1 7s ease-in-out 1.5s infinite reverse; }
+        .bento-card:nth-child(5) { animation: bentoIn 0.6s cubic-bezier(0.2,0.8,0.2,1) 0.9s forwards, bentoFloat2 5.5s ease-in-out 1.6s infinite reverse; }
+        @keyframes bentoIn {
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bentoFloat1 {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+        @keyframes bentoFloat2 {
+          0%, 100% { transform: translateY(0) translateX(0); }
+          50% { transform: translateY(-4px) translateX(3px); }
+        }
+        @keyframes bentoFloat3 {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-5px) translateX(-2px); }
+        }
+
+        /* progress bar */
+        .progress-track {
+          width: 100%;
+          height: 6px;
+          background: rgba(0,0,0,0.05);
+          border-radius: 3px;
+          overflow: hidden;
+          margin-top: 8px;
+        }
+        .progress-fill {
+          height: 100%;
+          border-radius: 3px;
+          transform-origin: left;
+          animation: progressGrow 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s both;
+        }
+        @keyframes progressGrow {
+          from { transform: scaleX(0); }
+          to { transform: scaleX(1); }
+        }
+
+        /* tech stack pills */
+        .tech-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          margin-top: 10px;
+        }
+        .tech-pill {
+          font-size: 10px;
+          font-weight: 700;
+          padding: 5px 10px;
+          border-radius: 20px;
+          border: 1px solid rgba(0,0,0,0.06);
+          color: var(--text);
+          background: rgba(255,255,255,0.8);
+          opacity: 0;
+          animation: pillIn 0.4s ease forwards;
+        }
+        .tech-pill:nth-child(1) { animation-delay: 1s; }
+        .tech-pill:nth-child(2) { animation-delay: 1.1s; }
+        .tech-pill:nth-child(3) { animation-delay: 1.2s; }
+        .tech-pill:nth-child(4) { animation-delay: 1.3s; }
+        .tech-pill:nth-child(5) { animation-delay: 1.4s; }
+        .tech-pill:nth-child(6) { animation-delay: 1.5s; }
+        .tech-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          display: inline-block;
+          margin-right: 5px;
+          vertical-align: middle;
+        }
+        @keyframes pillIn {
+          from { opacity: 0; transform: scale(0.8); }
+          to { opacity: 1; transform: scale(1); }
+        }
+
+        /* active users row */
+        .users-row {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
+          margin-top: 10px;
         }
-        .fc-1 { top: 30px; right: -30px; animation: fu .7s ease .5s both, floatCard 5s ease-in-out 1.2s infinite; }
-        .fc-2 { bottom: 30px; left: -40px; animation: fu .7s ease .6s both, floatCard 7s ease-in-out 1.3s infinite reverse; }
-        .fc-3 { bottom: 160px; right: -20px; animation: fu .7s ease .7s both, floatCard 6s ease-in-out 1.4s infinite; }
-        .fc-icon {
-          width: 38px; height: 38px;
-          border-radius: 12px;
+        .users-avatars {
+          display: flex;
+        }
+        .user-circle {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 16px;
+          font-size: 11px;
+          font-weight: 700;
+          color: #fff;
+          border: 2px solid #fff;
+          margin-left: -8px;
+          opacity: 0;
+          animation: pillIn 0.4s ease forwards;
         }
-        .fc-icon.green { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
-        .fc-icon.orange { background: rgba(255, 94, 0, 0.1); color: var(--accent); }
-        .fc-icon.blue { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
-        .fc-info { display: flex; flex-direction: column; }
-        .fc-val { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--text); line-height: 1.1; }
-        .fc-label { font-size: 9px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .user-circle:first-child { margin-left: 0; }
+        .user-circle:nth-child(1) { animation-delay: 0.9s; }
+        .user-circle:nth-child(2) { animation-delay: 1.0s; }
+        .user-circle:nth-child(3) { animation-delay: 1.1s; }
+        .user-circle:nth-child(4) { animation-delay: 1.2s; }
+        .user-circle:nth-child(5) { animation-delay: 1.3s; }
+        .users-count {
+          display: flex;
+          flex-direction: column;
+        }
+        .users-num {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 22px;
+          color: var(--text);
+          line-height: 1;
+        }
+        .users-label {
+          font-size: 9px;
+          color: var(--muted);
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
 
         /* buttons */
         .ha { display: flex; gap: 16px; margin-top: 8px; margin-bottom: 40px; }
@@ -437,6 +542,8 @@ export default function Hero() {
           border-right: 1px solid var(--border);
           display: flex;
           flex-direction: column;
+          align-items: center;
+          text-align: center;
           gap: 4px;
         }
         .st:last-child { border-right: none; }
@@ -552,82 +659,102 @@ export default function Hero() {
               <div className="orb orb-1" />
               <div className="orb orb-2" />
 
-              <div className="dash-card">
-                <div className="dash-header">
-                  <span className="dash-title">Dashboard Overview</span>
-                  <div className="dash-status">
-                    <div className="dash-dot" />
-                    Live
-                  </div>
-                </div>
-
-                <div className="dash-grid">
-                  <div className="dash-metric">
-                    <div className="dm-label">Revenue</div>
-                    <div className="dm-value">$128.4k</div>
-                    <div className="dm-change">↑ 12.3%</div>
-                  </div>
-                  <div className="dash-metric">
-                    <div className="dm-label">Users</div>
-                    <div className="dm-value">24.8k</div>
-                    <div className="dm-change">↑ 8.1%</div>
-                  </div>
-                  <div className="dash-metric">
-                    <div className="dm-label">Conversion</div>
-                    <div className="dm-value">4.8%</div>
-                    <div className="dm-change down">↓ 0.6%</div>
-                  </div>
-                  <div className="dash-metric">
-                    <div className="dm-label">Page Speed</div>
-                    <div className="dm-value">96</div>
-                    <div className="dm-change">↑ 3pts</div>
-                  </div>
-                </div>
-
-                <div className="dash-chart">
-                  <div className="dc-head">
-                    <span className="dc-title">Monthly Growth</span>
-                    <span className="dc-badge">+24% this month</span>
-                  </div>
-                  <div className="dc-bars">
-                    {[40, 55, 45, 70, 60, 85, 75, 90, 80, 95, 88, 100].map((h, i) => (
-                      <div key={i} className="dc-bar-wrap">
-                        <div
-                          className="dc-bar"
-                          style={{
-                            height: `${h}%`,
-                            background: i === 11 ? 'linear-gradient(to top, #FF5E00, #ff8c40)' : 'rgba(255, 94, 0, 0.12)',
-                            animationDelay: `${i * 0.05}s`,
-                          }}
-                        />
-                        <span className="dc-bar-label">
-                          {['J','F','M','A','M','J','J','A','S','O','N','D'][i]}
-                        </span>
-                      </div>
+              <div className="bento">
+                {/* Revenue Card */}
+                <div className="bento-card">
+                  <div className="bento-label">Revenue</div>
+                  <div className="bento-value">$128.4K</div>
+                  <span className="bento-change up">↑ 12.3%</span>
+                  <div className="spark-row">
+                    {[35, 50, 40, 65, 55, 80, 70, 85, 75, 92, 84, 100].map((h, i) => (
+                      <div
+                        key={i}
+                        className="spark-bar"
+                        style={{
+                          height: `${h}%`,
+                          background: i >= 9 ? 'linear-gradient(to top, #FF5E00, #ff8c40)' : 'rgba(255, 94, 0, 0.12)',
+                          animationDelay: `${0.3 + i * 0.04}s`,
+                        }}
+                      />
                     ))}
                   </div>
                 </div>
-              </div>
 
-              <div className="float-card fc-1">
-                <div className="fc-icon green">↑</div>
-                <div className="fc-info">
-                  <span className="fc-val">98.2%</span>
-                  <span className="fc-label">Uptime</span>
+                {/* Traffic Breakdown Card */}
+                <div className="bento-card">
+                  <div className="bento-label">Traffic Source</div>
+                  <div className="donut-wrap">
+                    <svg width="80" height="80" viewBox="0 0 80 80">
+                      <circle cx="40" cy="40" r="30" fill="none" stroke="rgba(255,94,0,0.1)" strokeWidth="10" />
+                      <circle cx="40" cy="40" r="30" fill="none" stroke="#FF5E00" strokeWidth="10" strokeDasharray="113 188" strokeDashoffset="0" strokeLinecap="round" style={{ transform: 'rotate(-90deg)', transformOrigin: 'center', animation: 'gf 1.2s ease both' }} />
+                      <circle cx="40" cy="40" r="30" fill="none" stroke="#0F0F0F" strokeWidth="10" strokeDasharray="47 188" strokeDashoffset="-113" strokeLinecap="round" style={{ transform: 'rotate(-90deg)', transformOrigin: 'center', animation: 'gf 1.2s ease 0.2s both' }} />
+                      <circle cx="40" cy="40" r="30" fill="none" stroke="#838585" strokeWidth="10" strokeDasharray="28 188" strokeDashoffset="-160" strokeLinecap="round" style={{ transform: 'rotate(-90deg)', transformOrigin: 'center', animation: 'gf 1.2s ease 0.4s both' }} />
+                      <text x="40" y="38" textAnchor="middle" fill="var(--text)" fontFamily="'Bebas Neue', sans-serif" fontSize="18">60%</text>
+                      <text x="40" y="50" textAnchor="middle" fill="var(--muted)" fontSize="7" fontWeight="700">ORGANIC</text>
+                    </svg>
+                    <div className="donut-legend">
+                      <div className="donut-item"><div className="donut-dot" style={{ background: '#FF5E00' }} />Organic — 60%</div>
+                      <div className="donut-item"><div className="donut-dot" style={{ background: '#0F0F0F' }} />Direct — 25%</div>
+                      <div className="donut-item"><div className="donut-dot" style={{ background: '#838585' }} />Social — 15%</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="float-card fc-2">
-                <div className="fc-icon orange">★</div>
-                <div className="fc-info">
-                  <span className="fc-val">4.9/5</span>
-                  <span className="fc-label">Client Rating</span>
+
+                {/* Wide Status Card */}
+                <div className="bento-card bento-wide">
+                  <div className="bento-label">System Status</div>
+                  <div className="status-row">
+                    <div className="status-item">
+                      <div className="status-dot" style={{ background: '#22c55e', boxShadow: '0 0 8px rgba(34,197,94,0.4)' }} />
+                      <span className="status-text">Uptime</span>
+                      <span className="status-val">99.9%</span>
+                    </div>
+                    <div className="status-item">
+                      <div className="status-dot" style={{ background: '#FF5E00', boxShadow: '0 0 8px rgba(255,94,0,0.4)' }} />
+                      <span className="status-text">Speed</span>
+                      <span className="status-val">0.8s</span>
+                    </div>
+                    <div className="status-item">
+                      <div className="status-dot" style={{ background: '#3b82f6', boxShadow: '0 0 8px rgba(59,130,246,0.4)' }} />
+                      <span className="status-text">Rating</span>
+                      <span className="status-val">4.9/5</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="float-card fc-3">
-                <div className="fc-icon blue">⚡</div>
-                <div className="fc-info">
-                  <span className="fc-val">0.8s</span>
-                  <span className="fc-label">Avg Load Time</span>
+
+                {/* Active Users Card */}
+                <div className="bento-card">
+                  <div className="bento-label">Active Users</div>
+                  <div className="users-row">
+                    <div className="users-avatars">
+                      <div className="user-circle" style={{ background: '#FF5E00' }}>KR</div>
+                      <div className="user-circle" style={{ background: '#0F0F0F' }}>MS</div>
+                      <div className="user-circle" style={{ background: '#838585' }}>AK</div>
+                      <div className="user-circle" style={{ background: '#FF5E00' }}>DN</div>
+                      <div className="user-circle" style={{ background: '#2A2B2B' }}>+8</div>
+                    </div>
+                    <div className="users-count">
+                      <span className="users-num">1,247</span>
+                      <span className="users-label">Online Now</span>
+                    </div>
+                  </div>
+                  <div className="progress-track">
+                    <div className="progress-fill" style={{ width: '78%', background: 'linear-gradient(to right, #FF5E00, #ff8c40)' }} />
+                  </div>
+                  <div style={{ fontSize: '9px', color: 'var(--muted)', fontWeight: 700, marginTop: '4px', textTransform: 'uppercase' as const, letterSpacing: '0.5px' }}>78% Server Capacity</div>
+                </div>
+
+                {/* Tech Stack Card */}
+                <div className="bento-card">
+                  <div className="bento-label">Tech Stack</div>
+                  <div className="tech-pills">
+                    <span className="tech-pill"><span className="tech-dot" style={{background:'#61DAFB'}}></span>React</span>
+                    <span className="tech-pill"><span className="tech-dot" style={{background:'#0F0F0F'}}></span>Next.js</span>
+                    <span className="tech-pill"><span className="tech-dot" style={{background:'#3178C6'}}></span>TypeScript</span>
+                    <span className="tech-pill"><span className="tech-dot" style={{background:'#38BDF8'}}></span>Tailwind</span>
+                    <span className="tech-pill"><span className="tech-dot" style={{background:'#FF5E00'}}></span>Firebase</span>
+                    <span className="tech-pill"><span className="tech-dot" style={{background:'#68A063'}}></span>Node.js</span>
+                  </div>
                 </div>
               </div>
             </div>

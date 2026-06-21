@@ -32,25 +32,29 @@ export default function Process() {
         {/* Timeline Desktop (Wavy layout) */}
         <div className="hidden md:block pb-12">
           <div className="relative w-full h-[400px]">
-            {/* The SVG Track */}
-            <motion.svg 
-              className="absolute inset-0 w-full h-full pointer-events-none" 
-              viewBox="0 0 1000 100" 
-              preserveAspectRatio="none"
+            {/* The SVG Track Wrapper */}
+            <motion.div 
+              className="absolute inset-0 w-full h-full pointer-events-none"
               initial={{ clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' }}
               whileInView={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 2, ease: "easeInOut", delay: 0.2 }}
             >
-              {/* Segment 1: 01 to 02 */}
-              <path d="M 100 25 C 200 25, 200 75, 300 75" className="stroke-primary/30" strokeWidth="2" strokeDasharray="10 10" vectorEffect="non-scaling-stroke" fill="transparent" />
-              {/* Segment 2: 02 to 03 */}
-              <path d="M 300 75 C 400 75, 400 25, 500 25" className="stroke-primary/30" strokeWidth="2" strokeDasharray="10 10" vectorEffect="non-scaling-stroke" fill="transparent" />
-              {/* Segment 3: 03 to 04 */}
-              <path d="M 500 25 C 600 25, 600 75, 700 75" className="stroke-primary/30" strokeWidth="2" strokeDasharray="10 10" vectorEffect="non-scaling-stroke" fill="transparent" />
-              {/* Segment 4: 04 to 05 */}
-              <path d="M 700 75 C 800 75, 800 25, 900 25" className="stroke-primary/30" strokeWidth="2" strokeDasharray="10 10" vectorEffect="non-scaling-stroke" fill="transparent" />
-            </motion.svg>
+              <svg 
+                className="absolute inset-0 w-full h-full opacity-80" 
+                viewBox="0 0 1000 100" 
+                preserveAspectRatio="none"
+              >
+                {/* Segment 1: 01 to 02 */}
+                <path d="M 100 25 C 200 25, 200 75, 300 75" className="stroke-primary" strokeWidth="2" strokeDasharray="10 10" vectorEffect="non-scaling-stroke" fill="transparent" />
+                {/* Segment 2: 02 to 03 */}
+                <path d="M 300 75 C 400 75, 400 25, 500 25" className="stroke-primary" strokeWidth="2" strokeDasharray="10 10" vectorEffect="non-scaling-stroke" fill="transparent" />
+                {/* Segment 3: 03 to 04 */}
+                <path d="M 500 25 C 600 25, 600 75, 700 75" className="stroke-primary" strokeWidth="2" strokeDasharray="10 10" vectorEffect="non-scaling-stroke" fill="transparent" />
+                {/* Segment 4: 04 to 05 */}
+                <path d="M 700 75 C 800 75, 800 25, 900 25" className="stroke-primary" strokeWidth="2" strokeDasharray="10 10" vectorEffect="non-scaling-stroke" fill="transparent" />
+              </svg>
+            </motion.div>
 
             <div className="grid grid-cols-5 h-full relative z-10 w-full">
               {PROCESS_STEPS.map((step, index) => {
@@ -108,9 +112,6 @@ export default function Process() {
 
         {/* Timeline Mobile */}
         <div className="md:hidden relative">
-          {/* Vertical Line */}
-          <div className="absolute top-12 left-[39px] w-[2px] h-[calc(100%-100px)] bg-transparent z-0 border-l-[2px] border-dashed border-primary/30" />
-          
           <div className="flex flex-col gap-12 relative z-10">
             {PROCESS_STEPS.map((step, index) => (
               <motion.div
@@ -119,8 +120,20 @@ export default function Process() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="flex items-start"
+                className="flex items-start relative"
               >
+                {/* Line segment connecting to next step */}
+                {index !== PROCESS_STEPS.length - 1 && (
+                  <motion.div 
+                    className="absolute left-[39px] w-0 border-l-2 border-dashed border-primary opacity-80 origin-top z-0"
+                    style={{ top: '40px', height: 'calc(100% + 48px)' }}
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  />
+                )}
+
                 {/* Icon */}
                 <div className="w-[80px] h-[80px] min-w-[80px] rounded-full border-4 border-primary bg-white text-primary flex items-center justify-center shadow-md relative z-10">
                   {step.icon ? <step.icon className="w-8 h-8" /> : <span className="font-bold text-xl">0{index + 1}</span>}

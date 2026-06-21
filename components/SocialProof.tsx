@@ -25,9 +25,9 @@ const LOGOS = [
 
 export default function SocialProof() {
   return (
-    <section className="py-12 border-y border-slate-100 bg-white relative overflow-hidden">
+    <section className="py-4 border-y border-slate-100 bg-white relative overflow-hidden">
       {/* Marquee */}
-      <div className="relative flex overflow-x-hidden border-t border-slate-100 bg-slate-50/50 py-10">
+      <div className="relative flex overflow-x-hidden border-t border-slate-100 bg-slate-50/50 py-4 items-center">
         <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-background to-transparent" />
         <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-background to-transparent" />
         

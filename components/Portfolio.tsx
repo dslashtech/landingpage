@@ -16,7 +16,7 @@ export default function Portfolio() {
   );
 
   return (
-    <section id="portfolio" className="py-24 relative overflow-hidden bg-white border-t border-slate-50">
+    <section id="portfolio" className="pt-24 pb-10 relative overflow-hidden bg-white border-t border-slate-50">
       <div className="container mx-auto px-6 max-w-7xl">
 
         {/* Section Header */}
