@@ -59,6 +59,27 @@ export function Header() {
                                         {/* Dropdown Sidebar */}
                                         <div className="w-[300px] bg-slate-50/50 border-r border-slate-100 p-6 flex flex-col gap-2">
                                             {DETAILED_SERVICES.map((service) => (
+                                                service.id === 'marketing' ? (
+                                                    <a
+                                                        key={service.id}
+                                                        href="/digital-marketing"
+                                                        onMouseEnter={() => setActiveServiceId(service.id)}
+                                                        className={cn(
+                                                            "flex items-center gap-3 w-full text-left p-3 rounded-xl transition-all duration-300 group relative",
+                                                            activeServiceId === service.id 
+                                                                ? "bg-white shadow-lg shadow-primary/5 text-primary border border-slate-100" 
+                                                                : "text-textMuted hover:bg-white/50 hover:text-textPrimary"
+                                                        )}
+                                                    >
+                                                        <div className={cn(
+                                                            "w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-300",
+                                                            activeServiceId === service.id ? "bg-primary text-white" : "bg-slate-100 group-hover:bg-slate-200"
+                                                        )}>
+                                                            <service.icon size={20} strokeWidth={2.5} />
+                                                        </div>
+                                                        <span className="font-bold text-sm tracking-tight">{service.title}</span>
+                                                    </a>
+                                                ) : (
                                                 <button
                                                     key={service.id}
                                                     onMouseEnter={() => setActiveServiceId(service.id)}
@@ -77,6 +98,7 @@ export function Header() {
                                                     </div>
                                                     <span className="font-bold text-sm tracking-tight">{service.title}</span>
                                                 </button>
+                                                )
                                             ))}
                                         </div>
 
@@ -130,7 +152,7 @@ export function Header() {
                                                     </div>
 
                                                     <div className="mt-10 pt-6 border-t border-slate-50">
-                                                        <a href="#contact" className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:gap-3 transition-all">
+                                                        <a href="/#contact" className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:gap-3 transition-all">
                                                             Talk to our experts <ArrowRight size={16} />
                                                         </a>
                                                     </div>
@@ -155,10 +177,10 @@ export function Header() {
 				</div>
 				<div className="hidden items-center gap-3 md:flex">
 					<Button variant="ghost" className="rounded-full px-6 text-textMuted hover:text-primary" asChild>
-                        <a href="#contact">Consultation</a>
+                        <a href="/#contact">Consultation</a>
                     </Button>
 					<Button className="rounded-full px-6 shadow-lg shadow-primary/20 hover:scale-105 transition-transform" asChild>
-                        <a href="#contact">Get a Quote</a>
+                        <a href="/#contact">Get a Quote</a>
                     </Button>
 				</div>
 				<Button
@@ -180,9 +202,16 @@ export function Header() {
 						<div>
                             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-textMuted mb-4 block">Our Services</span>
                             <div className="grid gap-2">
-                                {DETAILED_SERVICES.map((link) => (
-                                    <ListItem key={link.title} title={link.title} description={link.description} icon={link.icon} href="#contact" onClick={() => setOpen(false)} />
-                                ))}
+                                    {DETAILED_SERVICES.map((link) => (
+                                        <ListItem
+                                            key={link.title}
+                                            title={link.title}
+                                            description={link.description}
+                                            icon={link.icon}
+                                            href={link.id === 'marketing' ? '/digital-marketing' : '/#contact'}
+                                            onClick={() => setOpen(false)}
+                                        />
+                                    ))}
                             </div>
                         </div>
 						
@@ -205,7 +234,7 @@ export function Header() {
 				</NavigationMenu>
 				<div className="flex flex-col gap-3 pb-10">
 					<Button size="lg" className="w-full rounded-2xl h-14 text-base font-bold shadow-xl shadow-primary/20" asChild>
-						<a href="#contact" onClick={() => setOpen(false)}>Get a Free Quote</a>
+						<a href="/#contact" onClick={() => setOpen(false)}>Get a Free Quote</a>
 					</Button>
 				</div>
 			</MobileMenu>

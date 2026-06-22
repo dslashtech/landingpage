@@ -5,15 +5,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { PORTFOLIO } from '@/lib/constants';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const CATEGORIES = ['All', 'Portfolio', 'Landing Pages', 'Web Apps', 'E-commerce'];
+const FEATURED_COUNT = 3;
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('All');
 
   const filteredProjects = PORTFOLIO.filter(
     (project) => activeCategory === 'All' || project.category === activeCategory
-  );
+  ).slice(0, FEATURED_COUNT);
 
   return (
     <section id="portfolio" className="pt-24 pb-10 relative overflow-hidden bg-white border-t border-slate-50">
@@ -136,6 +138,22 @@ export default function Portfolio() {
             ))}
           </AnimatePresence>
         </div>
+
+        {/* View All Projects */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-center mt-12"
+        >
+          <Link
+            href="/portfolio"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full border-2 border-textPrimary text-textPrimary font-bold text-sm hover:bg-textPrimary hover:text-white transition-all duration-300"
+          >
+            View All Projects
+            <ArrowUpRight size={16} />
+          </Link>
+        </motion.div>
 
       </div>
     </section>

@@ -21,7 +21,7 @@ export default function Home() {
       <Process />
       <Pricing />
       <FAQ />
-      <CTABanner />
+      {/* <CTABanner /> */}
       <Contact />
       <Footer />
     </main>

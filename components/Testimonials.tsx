@@ -14,8 +14,8 @@ const AVATAR_COLORS = [
 const AVATAR_LAYOUT = [
   { left: 5, top: 18, size: 100, ring: true },
   { left: 18, top: 52, size: 110, ring: false },
-  { left: 32, top: 12, size: 100, ring: false },
-  { left: 45, top: 38, size: 130, ring: true },
+  { left: 32, top: 12, size: 100, ring: true },
+  { left: 45, top: 38, size: 130, ring: false },
   { left: 60, top: 14, size: 105, ring: true },
   { left: 72, top: 50, size: 100, ring: false },
   { left: 84, top: 18, size: 100, ring: true },

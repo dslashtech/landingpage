@@ -18,11 +18,11 @@ import {
 
 
 export const NAV_LINKS = [
-  { label: 'Services', href: '#contact' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Process', href: '#process' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', href: '/#contact' },
+  { label: 'Portfolio', href: '/#portfolio' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 // Single source of truth for business contact details.
@@ -197,7 +197,7 @@ export const PORTFOLIO = [
     description: 'A professional appliance repair service site for Salem with instant WhatsApp booking, a 2-hour response guarantee, and 5K+ happy customer proof points.',
     image: '/projects/3_smartcool.png',
     tags: ['Next.js', 'Tailwind', 'WhatsApp API'],
-    link: 'https://smartcooltechnologies.netlify.app/',
+    link: 'https://smartcooltechnologies.in/appliance-service/',
   },
   {
     title: 'Modern Dashboard Design',

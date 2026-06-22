@@ -60,7 +60,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li><Link href="#" className="text-textMuted hover:text-primary transition-colors text-sm">About Us</Link></li>
               <li><Link href="#" className="text-textMuted hover:text-primary transition-colors text-sm">Careers</Link></li>
-              <li><Link href="#" className="text-textMuted hover:text-primary transition-colors text-sm">Portfolio</Link></li>
+              <li><Link href="/portfolio" className="text-textMuted hover:text-primary transition-colors text-sm">Portfolio</Link></li>
               <li><Link href="#" className="text-textMuted hover:text-primary transition-colors text-sm">Contact</Link></li>
             </ul>
           </div>
@@ -83,8 +83,8 @@ export default function Footer() {
             &copy; {currentYear} Dslash. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <Link href="#" className="text-textMuted hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link href="#" className="text-textMuted hover:text-primary transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="text-textMuted hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-textMuted hover:text-primary transition-colors">Terms of Service</Link>
           </div>
         </div>
 
