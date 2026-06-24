@@ -2,7 +2,7 @@ import { Header } from '@/components/ui/header-3';
 import Hero from '@/components/Hero';
 import SocialProof from '@/components/SocialProof';
 import Process from '@/components/Process';
-import Portfolio from '@/components/Portfolio';
+import Services from '@/components/Services';
 import Testimonials from '@/components/Testimonials';
 import Pricing from '@/components/Pricing';
 import FAQ from '@/components/FAQ';
@@ -16,7 +16,7 @@ export default function Home() {
       <Header />
       <Hero />
       <SocialProof />
-      <Portfolio />
+      <Services />
       <Testimonials />
       <Process />
       <Pricing />

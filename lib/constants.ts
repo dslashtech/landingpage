@@ -18,8 +18,8 @@ import {
 
 
 export const NAV_LINKS = [
-  { label: 'Services', href: '/#contact' },
-  { label: 'Portfolio', href: '/#portfolio' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Portfolio', href: '/portfolio' },
   { label: 'Process', href: '/#process' },
   { label: 'Pricing', href: '/#pricing' },
   { label: 'Contact', href: '/#contact' },
@@ -170,6 +170,7 @@ export const PORTFOLIO = [
   {
     title: 'SunDrift Luxury Resort',
     category: 'Landing Pages',
+    serviceId: 'web',
     description: 'A tropical resort landing page with immersive hero imagery, room booking flows, and 4.9-star guest ratings — crafted to convert visitors into bookings.',
     image: '/projects/1_sundrift.png',
     tags: ['Next.js', 'Framer Motion', 'Tailwind'],
@@ -178,6 +179,7 @@ export const PORTFOLIO = [
   {
     title: 'Premium Portfolio UI',
     category: 'Portfolio',
+    serviceId: 'design',
     description: 'A sleek, modern portfolio showcasing dark mode aesthetics and smooth micro-interactions, designed for creative agencies.',
     image: '/projects/1_portfolio.png',
     tags: ['Portfolio', 'React', 'Framer Motion', 'Tailwind CSS'],
@@ -186,6 +188,7 @@ export const PORTFOLIO = [
   {
     title: 'Belle Aura Studio',
     category: 'Landing Pages',
+    serviceId: 'web',
     description: 'A luxury beauty & spa landing page for Bengaluru\'s premier salon — showcasing bridal makeup, spa services, and 25,000+ happy clients with WhatsApp booking.',
     image: '/projects/2_parlor.png',
     tags: ['Next.js', 'Tailwind', 'WhatsApp API'],
@@ -194,6 +197,7 @@ export const PORTFOLIO = [
   {
     title: 'Smart Cool Technologies',
     category: 'Landing Pages',
+    serviceId: 'web',
     description: 'A professional appliance repair service site for Salem with instant WhatsApp booking, a 2-hour response guarantee, and 5K+ happy customer proof points.',
     image: '/projects/3_smartcool.png',
     tags: ['Next.js', 'Tailwind', 'WhatsApp API'],
@@ -202,6 +206,7 @@ export const PORTFOLIO = [
   {
     title: 'Modern Dashboard Design',
     category: 'Portfolio',
+    serviceId: 'design',
     description: 'A high-performance analytics dashboard featuring dark mode aesthetics, intuitive data visualization, and real-time insights.',
     image: '/projects/2_portfolio.png',
     tags: ['Portfolio', 'Next.js', 'Tailwind', 'Chart.js'],
@@ -210,6 +215,7 @@ export const PORTFOLIO = [
   {
     title: 'Elegance Boutique',
     category: 'E-commerce',
+    serviceId: 'ecommerce',
     description: 'A premium Indian fashion e-commerce store for handcrafted sarees & kurtis — featuring Pan-India delivery to 500+ cities, 98% satisfaction rate, and 200+ artisan partners.',
     image: '/projects/4_boutique.png',
     tags: ['Next.js', 'Stripe', 'Tailwind'],
@@ -218,6 +224,7 @@ export const PORTFOLIO = [
   {
     title: 'Meera UPVC & Interiors',
     category: 'Landing Pages',
+    serviceId: 'web',
     description: 'A bold interior solutions landing page specialising in UPVC doors, false ceilings & kitchen cabinets — with a 100% weather-proof warranty and instant quote CTA.',
     image: '/projects/5_pvc.png',
     tags: ['Next.js', 'Tailwind', 'WhatsApp API'],
@@ -226,6 +233,7 @@ export const PORTFOLIO = [
   {
     title: 'CareConnect',
     category: 'Web Apps',
+    serviceId: 'web',
     description: 'A compassionate HIPAA-compliant web app for Alzheimer\'s caregivers — offering 500+ resources, a supportive community, and 24/7 access to practical care tools.',
     image: '/projects/6_care_connect.png',
     tags: ['React', 'Node.js', 'Firebase'],
@@ -234,6 +242,7 @@ export const PORTFOLIO = [
   {
     title: 'Creative Agency Portfolio',
     category: 'Portfolio',
+    serviceId: 'design',
     description: 'A modern, interactive portfolio designed to showcase creative work with stunning animations and a clean layout.',
     image: '/projects/3_portfolio.png',
     tags: ['React', 'Framer Motion', 'Tailwind CSS'],
@@ -242,6 +251,7 @@ export const PORTFOLIO = [
   {
     title: 'Global Explorer Tourism',
     category: 'Landing Pages',
+    serviceId: 'web',
     description: 'An immersive travel and tourism landing page featuring breathtaking visuals, destination guides, and seamless booking flows.',
     image: '/projects/7_tourisim.png',
     tags: ['Next.js', 'Tailwind', 'Framer Motion'],
@@ -250,6 +260,7 @@ export const PORTFOLIO = [
   {
     title: 'Analytics Dashboard Pro',
     category: 'Web Apps',
+    serviceId: 'erp',
     description: 'A comprehensive admin dashboard with real-time analytics, data visualization, and a dark mode aesthetic.',
     image: '/projects/8_dashboard.png',
     tags: ['React', 'Chart.js', 'Tailwind'],
@@ -258,10 +269,56 @@ export const PORTFOLIO = [
   {
     title: 'Enterprise Management System',
     category: 'Web Apps',
+    serviceId: 'erp',
     description: 'A robust enterprise dashboard designed for data management, user tracking, and seamless administrative workflows.',
     image: '/projects/9_dashboard.png',
     tags: ['Next.js', 'TypeScript', 'Tailwind'],
     link: 'https://yaitsakilan.github.io/crm/#',
+  },
+  {
+    title: 'CarQure — Google Ads',
+    category: 'Google Ads',
+    serviceId: 'marketing',
+    description: 'App install campaign: 3.46K clicks · 8.94% CTR · ₹5.98 Avg. CPC',
+    image: '/campigns/1.jpeg',
+    tags: ['App Install', 'Google Ads'],
+    link: '/digital-marketing',
+  },
+  {
+    title: 'Smart Cool Technologies',
+    category: 'Google Ads',
+    serviceId: 'marketing',
+    description: 'Long-running campaign: 55K impressions · 4.56K clicks · ₹67.6K spend',
+    image: '/campigns/2.jpeg',
+    tags: ['Search Campaign', 'Google Ads'],
+    link: '/digital-marketing',
+  },
+  {
+    title: 'Lenovo.com Campaign Deep-Dive',
+    category: 'Google Ads',
+    serviceId: 'marketing',
+    description: '373K clicks · 3.18M impressions · ₹7.6M cost · 68.6K conversions (Feb 2024 – Nov 2025)',
+    image: '/campigns/4.jpeg',
+    tags: ['E-Commerce', 'Google Ads'],
+    link: '/digital-marketing',
+  },
+  {
+    title: 'CarQure — Meta Ads',
+    category: 'Meta Ads',
+    serviceId: 'marketing',
+    description: '5.6M reach · 5.8 frequency · 0.7 CTR · ₹8.54 CPC (Jan–Jun 2026)',
+    image: '/campigns/5.jpeg',
+    tags: ['Reach', 'Meta Ads'],
+    link: '/digital-marketing',
+  },
+  {
+    title: 'CarQure — Meta Campaign Manager',
+    category: 'Meta Ads',
+    serviceId: 'marketing',
+    description: '41 active campaigns · ₹1.44M total spend · Multiple conversions across services',
+    image: '/campigns/6.jpeg',
+    tags: ['Campaign Manager', 'Meta Ads'],
+    link: '/digital-marketing',
   }
 ];
 

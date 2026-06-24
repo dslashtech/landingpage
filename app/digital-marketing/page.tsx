@@ -34,15 +34,6 @@ const CAMPAIGNS = [
     span: 'col-span-1 row-span-1',
   },
   {
-    id: 3,
-    src: '/campigns/3.jpeg',
-    title: 'Multi-Brand Search Campaign',
-    description: 'Lenovo & Asus: 373K clicks · 3.18M impressions · ₹7.6M spend · 68.6K conversions',
-    platform: 'Google Ads',
-    platformColor: 'bg-blue-100 text-blue-700',
-    span: 'col-span-1 lg:col-span-2 row-span-1',
-  },
-  {
     id: 4,
     src: '/campigns/4.jpeg',
     title: 'Lenovo.com Campaign Deep-Dive',
