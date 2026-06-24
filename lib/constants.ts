@@ -55,7 +55,8 @@ export const DETAILED_SERVICES = [
   {
     id: 'web',
     title: 'Website Development',
-    description: 'High-performance websites and custom storefronts designed to scale with your business.',
+    description: 'Your website is the first thing people see. We make sure it looks great, loads fast, and turns visitors into customers.',
+    tags: ['Landing Pages', 'Mobile Friendly', 'SEO Ready', 'Fast Loading'],
     icon: Globe,
     techStack: [
       { name: 'WordPress', category: 'CMS SOLUTION', icon: LayoutTemplate, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/wordpress/wordpress-plain.svg' },
@@ -69,7 +70,8 @@ export const DETAILED_SERVICES = [
   {
     id: 'mobile',
     title: 'Mobile App Development',
-    description: 'Native and cross-platform mobile applications that provide seamless user experiences on all devices.',
+    description: 'We turn your app idea into a real product that works smoothly on any phone. Simple to use, built to last.',
+    tags: ['iOS & Android', 'Easy to Use', 'App Store Ready', 'Smooth Performance'],
     icon: Smartphone,
     techStack: [
       { name: 'React Native', category: 'CROSS-PLATFORM', icon: Smartphone, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg' },
@@ -83,7 +85,8 @@ export const DETAILED_SERVICES = [
   {
     id: 'ecommerce',
     title: 'Custom E-Commerce',
-    description: 'Full-featured online stores with secure payments, inventory management, and seamless checkouts.',
+    description: 'We create online stores that are easy to manage and easy to buy from. More orders, less headache.',
+    tags: ['Online Store', 'Safe Payments', 'Easy Checkout', 'Sell 24/7'],
     icon: ShoppingBag,
     techStack: [
       { name: 'Next.js Commerce', category: 'HEADLESS E-COM', icon: LayoutTemplate, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg' },
@@ -97,7 +100,8 @@ export const DETAILED_SERVICES = [
   {
     id: 'marketing',
     title: 'Digital Marketing',
-    description: 'Strategic marketing campaigns that drive traffic, increase engagement, and boost conversions.',
+    description: 'Getting people to notice your brand online is our job. We run smart campaigns that bring in real results.',
+    tags: ['Meta Ads', 'Google Ads', 'SEO', 'Email Marketing'],
     icon: BarChart3,
     techStack: [
       { name: 'SEO Optimization', category: 'ORGANIC GROWTH', icon: Search, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/google/google-original.svg' },
@@ -111,7 +115,8 @@ export const DETAILED_SERVICES = [
   {
     id: 'design',
     title: 'Graphic Designing',
-    description: 'Visual identities and creative assets that communicate your brand values and resonate with your audience.',
+    description: 'People judge a brand by how it looks. We make sure yours looks great — from your logo to your social media posts.',
+    tags: ['Logo Design', 'Brand Identity', 'Social Creatives', 'Poster & Banner Design'],
     icon: PenTool,
     techStack: [
       { name: 'UI/UX Design', category: 'USER EXPERIENCE', icon: LayoutTemplate, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/figma/figma-original.svg' },
@@ -125,7 +130,8 @@ export const DETAILED_SERVICES = [
   {
     id: 'erp',
     title: 'ERP & CRM Systems',
-    description: 'Customized business management software to streamline operations and enhance customer relationships.',
+    description: 'Stop doing everything manually. We build systems that manage your customers, orders, and team — all in one place.',
+    tags: ['Customer Tracking', 'Sales Management', 'Smart Automation', 'Real-Time Reports'],
     icon: Settings,
     techStack: [
       { name: 'Custom CRM', category: 'CUSTOMER MANAGEMENT', icon: Users, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg' },

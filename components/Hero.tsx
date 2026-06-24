@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
-const words = ["Build.", "Launch.", "Grow.", "Scale."];
+const words = ["Design.", "Develop.", "Deliver.", "Drive.", "Dominate."];
 
 export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
@@ -581,11 +581,11 @@ export default function Hero() {
           <div className="hl">
             <div className="ey">
               <div className="ed" />
-              <span className="et">Digital Agency · Full-Stack Studio</span>
+              <span className="et">Made for Businesses Ready to Win</span>
             </div>
 
             <h1 className="h1">
-              We Help You
+              We help your brand
               <span className="h1d">
                 <span
                   style={{
@@ -602,17 +602,16 @@ export default function Hero() {
             </h1>
 
             <p className="hp">
-              From pixel-perfect websites to powerful apps, high-converting
-              e-commerce stores &amp; data-driven marketing — we build digital
-              products that grow your business.
+              From stunning websites to scroll-stopping ad campaigns, we&apos;re
+              the creative and technical team behind your digital growth.
+              One company. Every solution.
             </p>
 
             <div className="sp">
               {[
-                { label: "Web Development", color: "#FF5E00" },
-                { label: "App Development", color: "#0F0F0F" },
-                { label: "E-Commerce", color: "#838585" },
-                { label: "Digital Marketing", color: "#FF5E00" },
+                { label: "Website & App Development", color: "#FF5E00" },
+                { label: "Digital Marketing", color: "#0F0F0F" },
+                { label: "Branding & Design", color: "#838585" },
               ].map((s) => (
                 <div className="pill" key={s.label}>
                   <div className="pdot" style={{ background: s.color }} />
@@ -623,10 +622,10 @@ export default function Hero() {
 
             <div className="ha">
               <a href="#contact" className="bp">
-                Start a Project
+                Book a Free Consultation
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="#portfolio" className="bg2">View Our Work</a>
+              <a href="#portfolio" className="bg2">See What We&apos;ve Built</a>
             </div>
 
             <div className="tr">
@@ -647,9 +646,9 @@ export default function Hero() {
                 ))}
               </div>
               <div className="tt">
-                <strong>40+ happy clients worldwide</strong>
+                <strong>Brands built. Results delivered.</strong>
                 <br />
-                ⭐ 4.9 / 5 average rating
+                ⭐ 4.9 / 5 client satisfaction
               </div>
             </div>
           </div>

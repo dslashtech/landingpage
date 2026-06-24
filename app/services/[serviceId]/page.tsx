@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props) {
   const service = DETAILED_SERVICES.find((s) => s.id === params.serviceId);
   if (!service) return {};
   return {
-    title: `${service.title} | dslash Agency`,
+    title: `${service.title} | D Slash`,
     description: service.description,
   };
 }

@@ -40,7 +40,7 @@ export default function Services() {
               viewport={{ once: true, margin: '-100px' }}
               className="heading-luxury mb-6"
             >
-              Our <span className="text-gradient">Services</span>
+              Services We <span className="text-gradient">Offer</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -49,7 +49,7 @@ export default function Services() {
               transition={{ delay: 0.1 }}
               className="text-textMuted text-lg leading-relaxed"
             >
-              From idea to launch — we build digital products that scale. Explore a service to see how we&apos;ve done it for businesses like yours.
+              Think of us as your digital team. We build, market, and grow your business online. Explore our services and see what fits you.
             </motion.p>
           </div>
 
@@ -100,21 +100,16 @@ export default function Services() {
                     {service.description}
                   </p>
 
-                  {/* Tech pill row */}
+                  {/* Tag pill row */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {service.techStack.slice(0, 3).map((tech) => (
+                    {(service.tags ?? service.techStack.slice(0, 3).map(t => t.name)).map((tag) => (
                       <span
-                        key={tech.name}
+                        key={tag}
                         className="text-[11px] font-semibold tracking-wide uppercase text-secondary bg-slate-50 border border-slate-200 px-3 py-1 rounded-full"
                       >
-                        {tech.name}
+                        {tag}
                       </span>
                     ))}
-                    {service.techStack.length > 3 && (
-                      <span className="text-[11px] font-semibold tracking-wide uppercase text-textMuted bg-slate-50 border border-slate-200 px-3 py-1 rounded-full">
-                        +{service.techStack.length - 3} more
-                      </span>
-                    )}
                   </div>
 
                   {/* CTA Row */}
