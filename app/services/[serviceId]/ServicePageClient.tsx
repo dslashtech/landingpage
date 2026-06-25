@@ -33,6 +33,9 @@ export default function ServicePageClient({ serviceId }: Props) {
     if (serviceId === 'web') {
       return ['web', 'ecommerce', 'design', 'erp'].includes(p.serviceId);
     }
+    if (serviceId === 'student') {
+      return ['student', 'design'].includes(p.serviceId);
+    }
     return p.serviceId === serviceId;
   });
 

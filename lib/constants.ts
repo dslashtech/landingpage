@@ -13,7 +13,9 @@ import {
   Briefcase,
   Compass,
   Rocket,
-  Headset
+  Headset,
+  GraduationCap,
+  FileText
 } from 'lucide-react';
 
 
@@ -140,6 +142,21 @@ export const DETAILED_SERVICES = [
       { name: 'Workflow Automation', category: 'EFFICIENCY', icon: Settings, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/bash/bash-original.svg' },
       { name: 'Dashboard Analytics', category: 'DATA VISUALIZATION', icon: BarChart3, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/d3js/d3js-original.svg' },
       { name: 'Third-party API', category: 'INTEGRATION', icon: Database, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg' },
+    ]
+  },
+  {
+    id: 'student',
+    title: 'Student Services',
+    description: 'Kickstart your career with ATS-friendly resume building, stunning student portfolios, GitHub & LinkedIn optimization, and expert guidance on college projects and presentations.',
+    tags: ['Resume Making', 'Student Portfolio', 'GitHub & LinkedIn', 'College Projects'],
+    icon: GraduationCap,
+    techStack: [
+      { name: 'ATS Resume Building', category: 'CAREER', icon: FileText, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/markdown/markdown-original.svg' },
+      { name: 'Portfolio Development', category: 'SHOWCASING', icon: Globe, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg' },
+      { name: 'GitHub Optimization', category: 'DEVELOPER', icon: Code2, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg' },
+      { name: 'LinkedIn Branding', category: 'PROFESSIONAL', icon: Users, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg' },
+      { name: 'Project Guidance', category: 'ACADEMIC', icon: PenTool, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
+      { name: 'Presentation Design', category: 'COMMUNICATION', icon: Briefcase, logoUrl: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/canva/canva-original.svg' },
     ]
   }
 ];
@@ -325,6 +342,51 @@ export const PORTFOLIO = [
     image: '/campigns/6.jpeg',
     tags: ['Campaign Manager', 'Meta Ads'],
     link: '/digital-marketing',
+  },
+  {
+    title: 'Dev Portfolio Pro',
+    category: 'Student Portfolio',
+    serviceId: 'student',
+    description: 'A modern, responsive student portfolio website showcasing projects, skills, and achievements with a clean, professional design.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    tags: ['Portfolio', 'Next.js', 'Responsive'],
+    link: '#',
+  },
+  {
+    title: 'ATS-Optimized Resume',
+    category: 'Resume Making',
+    serviceId: 'student',
+    description: 'Professional ATS-friendly resume built to pass automated screenings and get your application noticed by top recruiters.',
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80',
+    tags: ['Resume', 'ATS', 'Career'],
+    link: '#',
+  },
+  {
+    title: 'GitHub Profile Revamp',
+    category: 'GitHub Optimization',
+    serviceId: 'student',
+    description: 'Transformed GitHub profile with pinned repositories, contribution metrics, and a polished README that attracts recruiters.',
+    image: 'https://images.unsplash.com/photo-1556075798-4825dfaaf498?auto=format&fit=crop&w=800&q=80',
+    tags: ['GitHub', 'Open Source', 'Profile'],
+    link: '#',
+  },
+  {
+    title: 'LinkedIn Branding Suite',
+    category: 'LinkedIn Optimization',
+    serviceId: 'student',
+    description: 'Strategic LinkedIn profile makeover with custom banner, keyword-rich headline, and compelling experience summaries.',
+    image: 'https://images.unsplash.com/photo-1611944212129-29977ae1398c?auto=format&fit=crop&w=800&q=80',
+    tags: ['LinkedIn', 'Branding', 'Networking'],
+    link: '#',
+  },
+  {
+    title: 'AI-Powered Chatbot',
+    category: 'College Projects',
+    serviceId: 'student',
+    description: 'End-to-end AI chatbot built with NLP and machine learning — a standout college capstone project with real-world impact.',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80',
+    tags: ['AI', 'Machine Learning', 'NLP'],
+    link: '#',
   }
 ];
 
