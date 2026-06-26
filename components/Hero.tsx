@@ -558,14 +558,16 @@ export default function Hero() {
         @media(max-width: 960px) {
           .hg { grid-template-columns: 1fr; padding: 0 24px; }
           .hl { padding: 80px 0 48px; text-align: center; align-items: center; }
-          .h1 { font-size: 80px; }
+          .h1 { font-size: clamp(48px, 12vw, 64px); }
           .hp { margin-left: auto; margin-right: auto; }
-          .ha { justify-content: center; }
-          .bp, .bg2 { white-space: nowrap; padding: 14px 24px; font-size: 14px; }
-          .tr { justify-content: center; }
+          .ha { justify-content: center; flex-wrap: wrap; width: 100%; }
+          .bp, .bg2 { padding: 14px 24px; font-size: 14px; text-align: center; flex: 1; min-width: 200px; justify-content: center; }
+          .tr { justify-content: center; flex-wrap: wrap; flex-direction: column; gap: 8px; }
           .sp { justify-content: center; }
           .hr { display: none; }
-          .st { padding: 24px; text-align: center; }
+          .ss { flex-direction: column; }
+          .st { padding: 24px; text-align: center; border-right: none; border-bottom: 1px solid var(--border); }
+          .st:last-child { border-bottom: none; }
           .sn { font-size: 36px; }
         }
       ` }} />
