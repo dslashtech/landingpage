@@ -132,17 +132,37 @@ export default function ServicePageClient({ serviceId }: Props) {
                     className="group flex flex-col bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-slate-200/60 hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
                   >
                     {/* Image */}
-                    <div className="relative overflow-hidden bg-slate-50">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={1200}
-                        height={800}
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-textPrimary shadow-sm opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <div className={`relative overflow-hidden ${'mobileImages' in project ? 'bg-[#fdfaf2] h-64 flex items-center justify-center' : 'bg-slate-50'}`}>
+                      {'mobileImages' in project && project.mobileImages ? (
+                        <div className="relative w-full h-full flex items-center justify-center mt-10">
+                          {/* Left Phone */}
+                          <div className="absolute w-[110px] h-[230px] rounded-[1.5rem] border-[6px] border-slate-900 overflow-hidden shadow-xl -rotate-[15deg] -translate-x-[4.5rem] translate-y-4 bg-white z-0 transition-transform duration-500 group-hover:-rotate-[18deg] group-hover:-translate-x-[5rem]">
+                            <Image src={project.mobileImages[0]} alt="Screen 1" fill className="object-cover" />
+                          </div>
+                          {/* Right Phone */}
+                          <div className="absolute w-[110px] h-[230px] rounded-[1.5rem] border-[6px] border-slate-900 overflow-hidden shadow-xl rotate-[15deg] translate-x-[4.5rem] translate-y-4 bg-white z-0 transition-transform duration-500 group-hover:rotate-[18deg] group-hover:translate-x-[5rem]">
+                            <Image src={project.mobileImages[2]} alt="Screen 3" fill className="object-cover" />
+                          </div>
+                          {/* Center Phone */}
+                          <div className="absolute w-[130px] h-[270px] rounded-[1.75rem] border-[7px] border-slate-900 overflow-hidden shadow-2xl bg-white z-10 transition-transform duration-500 group-hover:-translate-y-2">
+                            {/* Dynamic Island / Notch */}
+                            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-12 h-[12px] bg-slate-900 rounded-full z-20"></div>
+                            <Image src={project.mobileImages[1]} alt="Screen 2" fill className="object-cover" />
+                          </div>
+                        </div>
+                      ) : (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={1200}
+                          height={800}
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                        />
+                      )}
+                      
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
+                      <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-textPrimary shadow-sm opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:bg-primary group-hover:text-white transition-all duration-300 z-30">
                         <ArrowUpRight size={18} />
                       </div>
                     </div>
