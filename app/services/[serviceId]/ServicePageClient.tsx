@@ -1,7 +1,8 @@
 'use client';
 
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowUpRight, MessageCircle } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -25,7 +26,45 @@ const cardVariants = {
   },
 };
 
+const GRAPHIC_POSTERS = [
+  "1 (1).jpg", "1 (1).png", "1 (13).jpg", "1 (14).jpg", "1 (15).jpg",
+  "1 (16).jpg", "1 (17).jpg", "1 (18).jpg", "1 (19).jpg", "1 (20).jpg",
+  "1 (21).jpg", "1 (22).jpg", "1 (23).jpg", "1 (24).jpg", "1 (25).jpg",
+  "1 (26).jpg", "1 (27).jpg", "1 (28).jpg", "1 (29).jpg", "1 (30).jpg",
+  "1 (31).jpg", "1 (32).jpg", "1 (33).jpg", "1 (34).jpg", "1 (35).jpg"
+];
+
 export default function ServicePageClient({ serviceId }: Props) {
+  const [selectedPoster, setSelectedPoster] = useState<string | null>(null);
+
+  const showNext = useCallback(() => {
+    if (!selectedPoster) return;
+    const index = GRAPHIC_POSTERS.indexOf(selectedPoster);
+    setSelectedPoster(GRAPHIC_POSTERS[(index + 1) % GRAPHIC_POSTERS.length]);
+  }, [selectedPoster]);
+
+  const showPrev = useCallback(() => {
+    if (!selectedPoster) return;
+    const index = GRAPHIC_POSTERS.indexOf(selectedPoster);
+    setSelectedPoster(GRAPHIC_POSTERS[(index - 1 + GRAPHIC_POSTERS.length) % GRAPHIC_POSTERS.length]);
+  }, [selectedPoster]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedPoster(null);
+      }
+      if (e.key === 'ArrowRight') {
+        showNext();
+      }
+      if (e.key === 'ArrowLeft') {
+        showPrev();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [showNext, showPrev]);
+
   const service = DETAILED_SERVICES.find((s) => s.id === serviceId);
   
   // If we're on the Website Development page, show a mix of all related web projects
@@ -110,7 +149,31 @@ export default function ServicePageClient({ serviceId }: Props) {
             </h2>
           </motion.div>
 
-          {projects.length > 0 ? (
+          {serviceId === 'design' ? (
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-6">
+              {GRAPHIC_POSTERS.map((poster, index) => (
+                <motion.div
+                  key={poster}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="break-inside-avoid inline-block w-full mb-6 relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-slate-200/60 hover:-translate-y-1 transition-all duration-300 border border-slate-100 bg-slate-50 cursor-pointer"
+                  onClick={() => setSelectedPoster(poster)}
+                >
+                  <Image
+                    src={`/projects/graphics_designs/${poster}`}
+                    alt={`Graphic Design Poster ${index + 1}`}
+                    width={800}
+                    height={1000}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                </motion.div>
+              ))}
+            </div>
+          ) : projects.length > 0 ? (
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -132,7 +195,7 @@ export default function ServicePageClient({ serviceId }: Props) {
                     className="group flex flex-col bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-slate-200/60 hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
                   >
                     {/* Image */}
-                    <div className={`relative overflow-hidden ${'mobileImages' in project ? 'bg-[#fdfaf2] h-64 flex items-center justify-center' : 'bg-slate-50'}`}>
+                    <div className={`relative overflow-hidden ${'mobileImages' in project ? 'bg-[#fdfaf2] h-72 flex items-center justify-center' : `bg-slate-50 border-b border-slate-100 ${project.category.includes('Resume') ? 'aspect-[4/3]' : ''}`}`}>
                       {'mobileImages' in project && project.mobileImages ? (
                         <div className="relative w-full h-full flex items-center justify-center mt-10">
                           {/* Left Phone */}
@@ -150,6 +213,14 @@ export default function ServicePageClient({ serviceId }: Props) {
                             <Image src={project.mobileImages[1]} alt="Screen 2" fill className="object-cover" />
                           </div>
                         </div>
+                      ) : project.category.includes('Resume') ? (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        />
                       ) : (
                         <Image
                           src={project.image}
@@ -224,6 +295,76 @@ export default function ServicePageClient({ serviceId }: Props) {
 
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedPoster && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-md p-4 sm:p-8"
+            onClick={() => setSelectedPoster(null)}
+          >
+            <div className="absolute top-6 right-6 z-[110]">
+              <button
+                onClick={() => setSelectedPoster(null)}
+                className="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-colors duration-200"
+                aria-label="Close lightbox"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            
+            {/* Desktop Prev Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); showPrev(); }}
+              className="hidden sm:flex absolute left-8 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-colors duration-200 z-[110]"
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={32} />
+            </button>
+
+            {/* Desktop Next Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); showNext(); }}
+              className="hidden sm:flex absolute right-8 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-colors duration-200 z-[110]"
+              aria-label="Next image"
+            >
+              <ChevronRight size={32} />
+            </button>
+
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="relative max-h-[75vh] sm:max-h-[90vh] max-w-[95vw] sm:max-w-[90vw] flex items-center justify-center mb-16 sm:mb-0"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={`/projects/graphics_designs/${selectedPoster}`}
+                alt="Selected Poster"
+                width={1600}
+                height={2000}
+                className="w-auto h-auto max-w-full max-h-[75vh] sm:max-h-[90vh] object-contain rounded-xl shadow-2xl"
+                priority
+              />
+            </motion.div>
+
+            {/* Mobile Navigation (Bottom Center) */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-6 sm:hidden z-[110]">
+              <button onClick={(e) => { e.stopPropagation(); showPrev(); }} className="p-3 bg-white/10 active:bg-white/20 backdrop-blur-md rounded-full text-white transition-colors" aria-label="Previous image">
+                <ChevronLeft size={28} />
+              </button>
+              <button onClick={(e) => { e.stopPropagation(); showNext(); }} className="p-3 bg-white/10 active:bg-white/20 backdrop-blur-md rounded-full text-white transition-colors" aria-label="Next image">
+                <ChevronRight size={28} />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
